@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.html{
+		height: 100%;
+}
+.body{
+	background-color: white;
+	height: 100%;
+    margin: 0 auto;
+}
+
+.title {
+	color: black;
+	display: flex;
+    margin: 10px;
+    justify-content: space-around;
+}
+
+.message {
+	display: flex;
+    margin: 10px;
+    justify-content: space-around;
+}
