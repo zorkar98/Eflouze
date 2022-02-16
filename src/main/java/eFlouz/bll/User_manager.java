@@ -20,4 +20,16 @@ public class User_manager {
 	System.out.println(user.getMot_de_passe());
 	return (boolean) userOk;
 	}	
+	
+	
+	//Fonction d'enregistrement d'un nouvel utilisateur
+	public void ajouterUser (String pseudo, String nom, String prenom, String email, float telephone, String rue, int code_postal,
+			String ville, String mot_de_passe) {
+		
+		User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
+		
+		User userAjoute = userDAOJDBCImpl.ajouterUser(user);
+		
+		
+	}
 }
