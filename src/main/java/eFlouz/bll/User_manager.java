@@ -1,47 +1,23 @@
 package eFlouz.bll;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import eFlouz.bo.User;
 import eFlouz.dal.userDAOJDBCImpl;
 
-public class User_manager extends userDAOJDBCImpl{
+public class User_manager {
 	
-	private List<User> listeUser;
-
-	
-	public User_manager() {
-		super();
+	public boolean interrogerBase(String email,String mdp) throws Exception{
+	userDAOJDBCImpl userOkDao = new userDAOJDBCImpl();
+	boolean userOk = false;
+	User user = new User(email, mdp);
+	try {
+		userOk = userOkDao.selectAll(user);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
-
-	public List<User> listerUser(){
-		listeUser = new ArrayList<User>();
-		try {
-			listeUser = selectAll();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return listeUser;
-	}
-		
-	public boolean verifierUser(String email, String mot_de_passe) {
-		boolean validation = false;
-			
-		for (User utilisateur : listeUser) {
-			String courriel = utilisateur.getEmail();
-			String mdp = utilisateur.getMot_de_passe();
-			
-			if (courriel == email && mdp == mot_de_passe) {
-				validation = true;
-			}
-		}
-		return validation;
-	}
-	
-	public void ajouterUser(String email, String mot_de_passe) {
-		User user = new User(email, mot_de_passe);
-		
-	}
-
+	System.out.println("User_manager" + userOk);
+	System.out.println(user.getEmail());
+	System.out.println(user.getMot_de_passe());
+	return (boolean) userOk;
+	}	
 }
