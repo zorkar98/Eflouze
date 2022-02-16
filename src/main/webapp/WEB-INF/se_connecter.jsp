@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="html">
 <head>
@@ -12,6 +12,7 @@
 
 
 
+
 <h1 class="title">Bonjour</h1>
 <%if(request.getAttribute("couleur")!= "red"){ %>
 <span style="color: black" class="message" >Se connecter à eFlouz</span>
@@ -19,15 +20,19 @@
 <span style="color: red" class="message" >!!! Indentifiants de connexion non valides !!!</span>
 <%} %>
 <br>
-<form action="<%=request.getContextPath()%>/se_connecterServlet" method="post">
-<input type="text" name="email" placeholder="Adresse e-mail">
-<input type="password" name="mot_de_passe" placeholder="Mot de passe">
-<input type="submit" value="Connexion">
+<form action="<%=request.getContextPath()%>/se_connecterServlet" method="post" class="form">
+<input class="form_item" type="text" name="email" placeholder="Adresse e-mail">
+<input class="form_item" type="password" name="mot_de_passe" placeholder="Mot de passe">
+<input class="form_item" type="submit" value="Connexion">
+<div class="form_div">
 <input type="checkbox" id="memoriser" name="memoriser">
 <label for="memoriser">Se souvenir</label>
+</div>
 </form>
 <br>
-<button>créer un compte</button>
+<button class="button">Créer un compte</button>
+
+
 
 
 
