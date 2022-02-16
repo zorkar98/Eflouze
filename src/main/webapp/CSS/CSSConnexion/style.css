@@ -22,11 +22,26 @@ width: 300px;
 margin-inline: auto;
 }.form_item{
 margin: 2px;
+}.form_item_submit{
+margin: 2px;
+width:140px;
 }.form_div {
 display: flex;
 justify-content: flex-end;
 }.button {
 display: flex;
 margin: auto;
+}.div{
+display: flex;
+justify-content: space-around;
+align-content: center;
+flex-wrap: nowrap;
+flex-direction: row;
+}.div_submit{
+display: flex;
+justify-content: space-between;
+align-content: center;
+flex-wrap: nowrap;
+flex-direction: row;
 }
 
