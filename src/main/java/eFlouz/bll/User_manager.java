@@ -28,7 +28,12 @@ public class User_manager {
 		
 		User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
 		
-		User userAjoute = userDAOJDBCImpl.ajouterUser(user);
+		userDAOJDBCImpl userDAOJDBCImpl = new userDAOJDBCImpl();
+		try {
+			userDAOJDBCImpl.ajouterUser(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 	}

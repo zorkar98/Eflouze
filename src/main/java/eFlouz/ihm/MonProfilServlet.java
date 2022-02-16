@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eFlouz.bll.User_manager;
-import eFlouz.bo.User;
 
 /**
  * Servlet implementation class MonProfil
@@ -54,7 +53,8 @@ public class MonProfilServlet extends HttpServlet {
 		String ville = request.getParameter("Ville");
 		String motDePasse = request.getParameter("MotDePasse");
 			
-		User newUser = User_manager.ajouterUser(pseudo, nom, prenom, email, telephone, rue, codePostal,ville,motDePasse);
+		User_manager user_manager = new User_manager();
+		user_manager.ajouterUser(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 		
 		doGet(request, response);}
 		
