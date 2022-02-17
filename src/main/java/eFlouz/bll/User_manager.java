@@ -10,7 +10,7 @@ public class User_manager {
 	boolean userOk = false;
 	User user = new User(email, mdp);
 	try {
-		userOk = userOkDao.selectAll(user);
+		userOk = userOkDao.seConnecter(user);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -23,18 +23,26 @@ public class User_manager {
 	
 	
 	//Fonction d'enregistrement d'un nouvel utilisateur
-	public void ajouterUser (String pseudo, String nom, String prenom, String email, float telephone, String rue, int code_postal,
+	public int ajouterUser (String pseudo, String nom, String prenom, String email, float telephone, String rue, int code_postal,
 			String ville, String mot_de_passe) {
+	
+		//Réccupérération de l'info si le pseudo ou l'email sont déjà inscrit en base
+		int presenceEnBase = selectByPseudoAndEmail (pseudo,email);
 		
-		User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
+		//Si il ne sont pas présents l'inscription peut continuer
+		if (presenceEnBase == 0) {
 		
-		userDAOJDBCImpl userDAOJDBCImpl = new userDAOJDBCImpl();
-		try {
-			userDAOJDBCImpl.ajouterUser(user);
-		} catch (Exception e) {
-			e.printStackTrace();
+			User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
+			
+			userDAOJDBCImpl userDAOJDBCImpl = new userDAOJDBCImpl();
+			try {
+				userDAOJDBCImpl.ajouterUser(user);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
+		//Return de l'info si le pseudo ou l'email sont déjà pris pour l'IHM
+		return presenceEnBase ;
 		
 	}
 }
