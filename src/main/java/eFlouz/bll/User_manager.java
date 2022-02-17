@@ -4,9 +4,9 @@ import eFlouz.bo.User;
 import eFlouz.dal.userDAOJDBCImpl;
 
 public class User_manager {
-	
-	public boolean interrogerBase(String email,String mdp) throws Exception{
 	userDAOJDBCImpl userOkDao = new userDAOJDBCImpl();
+	public boolean interrogerBase(String email,String mdp) throws Exception{
+
 	boolean userOk = false;
 	User user = new User(email, mdp);
 	try {
@@ -25,23 +25,26 @@ public class User_manager {
 	//Fonction d'enregistrement d'un nouvel utilisateur
 	public int ajouterUser (String pseudo, String nom, String prenom, String email, float telephone, String rue, int code_postal,
 			String ville, String mot_de_passe) {
-	
-		//Réccupérération de l'info si le pseudo ou l'email sont déjà inscrit en base
-		int presenceEnBase = selectByPseudoAndEmail (pseudo,email);
+		int presenceEnBase = 12;
+		//Rï¿½ccupï¿½rï¿½ration de l'info si le pseudo ou l'email sont dï¿½jï¿½ inscrit en base
+		try {
+			presenceEnBase = userOkDao.selectByPseudoAndEmail (pseudo,email);
+			System.out.println(presenceEnBase);
 		
-		//Si il ne sont pas présents l'inscription peut continuer
-		if (presenceEnBase == 0) {
+		//Si il ne sont pas prï¿½sents l'inscription peut continuer
+			if (presenceEnBase == 0) {
 		
 			User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
 			
 			userDAOJDBCImpl userDAOJDBCImpl = new userDAOJDBCImpl();
-			try {
 				userDAOJDBCImpl.ajouterUser(user);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		//Return de l'info si le pseudo ou l'email sont déjà pris pour l'IHM
+		
+		//Return de l'info si le pseudo ou l'email sont dï¿½jï¿½ pris pour l'IHM
+		System.out.println("User_Manager : " + presenceEnBase);
 		return presenceEnBase ;
 		
 	}

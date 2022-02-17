@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,15 @@
 </head>
 <body class="body">
 	<h1 class="title">Bonjour</h1>
-	<%
+
+	<c:choose>
+  <c:when test="requestScope.couleur != red"><span style="color: black" class="message">Création de compte
+		eFlouz</span></c:when>
+  <c:when test="requestScope.couleur == red"><span style="color: red" class="message">!!! Indentifiants de
+		connexion non valides !!!</span></c:when>
+	</c:choose>
+
+	 <%-- <%
 	if (request.getAttribute("couleur") != "red") {
 	%>
 	<span style="color: black" class="message">Création de compte
@@ -22,9 +33,9 @@
 		connexion non valides !!!</span>
 	<%
 	}
-	%>
+	%>  --%>
 	<br>
-	<form  action="" <%=request.getContextPath()%>"/Profil" method="post" class="form">
+	<form  action="${pageContext.request.contextPath }/Profil" method="post" class="form">
 		<div class="div">
 			<input class="form_item" type="text" name="Pseudo" placeholder="Pseudo"> 
 			<input class="form_item" type="text" name="Nom" placeholder="Nom">
@@ -50,10 +61,8 @@
 			<input class="form_item_submit" type="submit" value="Créer" name="Creer" > 
 			<a href="./seConnecter.jsp"><button class="form_item_submit">Annuler</button></a>
 		</div>
-
-
-
 	</form>
-
+	<p class="message_creation"> ${requestScope.Succes}${requestScope.Pseudo}${requestScope.Email}${requestScope.Both}</p>
+	
 </body>
 </html>

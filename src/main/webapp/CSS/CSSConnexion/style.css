@@ -43,5 +43,9 @@ justify-content: space-between;
 align-content: center;
 flex-wrap: nowrap;
 flex-direction: row;
+}.message_creation{
+display: flex;
+justify-content: space-around;
+color: red;
 }
 

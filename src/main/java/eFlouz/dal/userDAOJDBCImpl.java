@@ -17,7 +17,7 @@ public class userDAOJDBCImpl  {
 	private static final String SELECT = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur "
 			+ "FROM [UTILISATEURS] "
 			+ "WHERE (email = ? and mot_de_passe = ?)";
-	private static final String SELECT_BY_PSEUDO_AND_EMAIL = "SELECT pseudo, email FROM UTILISATEURS WHERE (pseudo=? or email=?)";
+	private static final String SELECT_BY_PSEUDO_AND_EMAIL = "SELECT pseudo, email FROM UTILISATEURS WHERE (pseudo=? OR email=?)";
 	private static final String INSERT = "INSERT into UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe,credit, administrateur) "
 			+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 	
@@ -28,7 +28,7 @@ public class userDAOJDBCImpl  {
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 		
-		//création user à ajouter
+		//crï¿½ation user ï¿½ ajouter
 		rqt.setString(1,userAjoute.getPseudo());
 		rqt.setString(2,userAjoute.getNom());
 		rqt.setString(3,userAjoute.getPrenom());
@@ -41,7 +41,7 @@ public class userDAOJDBCImpl  {
 		rqt.setInt(10, 100);
 		rqt.setBoolean(11, false);
 		
-		//Verifie si des lignes ont été ajoutées, SI OUI -> genere KEY identity et ajoute à l'user inséré
+		//Verifie si des lignes ont ï¿½tï¿½ ajoutï¿½es, SI OUI -> genere KEY identity et ajoute ï¿½ l'user insï¿½rï¿½
 		int numberAffectedLine = rqt.executeUpdate();
 		if(numberAffectedLine >0 ) {
 			ResultSet rs = rqt.getGeneratedKeys();
@@ -63,28 +63,30 @@ public class userDAOJDBCImpl  {
 		rqt.setString(2, email);
 		ResultSet rs = rqt.executeQuery();
 		int presenceEnBase = 0;
+		System.out.println("resulset : "+presenceEnBase);
+		//VERIFIER si l'email ou/et le pseudo est/sont trouvï¿½(s)
 		
-		//VERIFIER si l'email ou/et le pseudo est/sont trouvé(s)
-		if(rs.next()) {
-			if (rs.getString(pseudo).trim().equals(pseudo.trim())) {
-				presenceEnBase = 1;
-			}
-			if (rs.getString(email).trim().equals(email.trim())){
-				presenceEnBase = 2;
-			}
-			if (rs.getString(pseudo).trim().equals(pseudo.trim()) && rs.getString(email).trim().equals(email.trim())) {
+			rs.next();
+			if (rs.getString("pseudo").trim().equals(pseudo.trim()))
+					{presenceEnBase++;}
+			
+			if (rs.getString("email").trim().equals(email.trim()))
+					{presenceEnBase+=2;}
+			if (rs.getString("pseudo").trim().equals(pseudo.trim()) && rs.getString("email").trim().equals(email.trim())) {
 				presenceEnBase = 3;
-			}else {
-				presenceEnBase =0;
-			}
+			
 		}
-		// SI presence en base = 0 -> rien trouvé
+		
+		System.out.println("resulset2 : " + presenceEnBase);
+			
+		
+		// SI presence en base = 0 -> rien trouvï¿½
 		// SI presence en base = 1 -> pseudo identique
 		// SI presence en base = 2 -> email identique
 		// SI presence en base = 3 -> les deux identiques
 		return presenceEnBase;
 	}
-	
+
 	
 	public boolean seConnecter(User user) throws Exception
 	{

@@ -39,10 +39,12 @@ public class MonProfilServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		
+		// Création de mon profil
 		String pseudo = request.getParameter("Pseudo");
 		String nom = request.getParameter("Nom");
 		String prenom = request.getParameter("Prenom");
@@ -54,10 +56,27 @@ public class MonProfilServlet extends HttpServlet {
 		String motDePasse = request.getParameter("MotDePasse");
 			
 		User_manager user_manager = new User_manager();
-		user_manager.ajouterUser(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
+		int presenceBase = user_manager.ajouterUser(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 		
-		doGet(request, response);}
 		
+		// Retour utilisateur sur succès ou echec et cause du rejet d'inscription
+		String succes = null;
+		String pseudoProfil = null;
+		String emailProfil = null;
+		String both = null;
+		switch (presenceBase) {
+		case 0 :  succes = "Votre compte à été ajouter avec succès";System.out.println(succes); break;
+		case 1 :  pseudoProfil = "Le pseudo est déjà utilisé, Votre compte n'à pas été ajouter désolé";System.out.println(pseudoProfil); break;
+		case 2 :  emailProfil = "L'email est déjà utilisé, Votre compte n'à pas été ajouter désolé";System.out.println(emailProfil); break;
+		case 3 :  both = "Le pseudo et l'email sont déjà utilisés, vérifier si vous n'avez pas déjà un compte";	System.out.println(both);
+		}
+			request.setAttribute("Succes", succes);
+			request.setAttribute("Pseudo", pseudoProfil);
+			request.setAttribute("Email", emailProfil);
+			request.setAttribute("Both", both);
+			System.out.println(presenceBase);
+		doGet(request, response);
+	}	
 		
 	}
 
