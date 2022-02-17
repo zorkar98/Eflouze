@@ -17,13 +17,14 @@ pageEncoding="UTF-8"%>
 
 
 <h1 class="title">Bonjour</h1>
-<c:choose>
-  <c:when test="requestScope.couleur != red"><span style="color: black" class="message"><P>Se connecter à eFlouz</P></span></c:when>
-  <c:when test="requestScope.couleur == red"><span style="color: red" class="message"><p>!!! Indentifiants de
-		connexion non valides !!!</p></span></c:when>
-	</c:choose>
+
+  
+  <h3 style="color:black" class="message">Se connecter à eFlouz</h3>
+  <c:if test="${couleur != red}">
+    <p style="color: red" class="message">!!! Indentifiants de connexion non valides !!! </p>
+  	</c:if>
 <br>
-<form action="<%=request.getContextPath()%>/seConnecterServlet" method="post" class="form">
+<form action="${pageContext.request.contextPath }/SeConnecterServlet" method="post" class="form">
 <input class="form_item" type="text" name="email" placeholder="Adresse e-mail">
 <input class="form_item" type="password" name="mot_de_passe" placeholder="Mot de passe">
 <input class="form_item" type="submit" value="Connexion">

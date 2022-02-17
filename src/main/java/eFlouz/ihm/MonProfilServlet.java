@@ -42,7 +42,12 @@ public class MonProfilServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+//		if(request.getParameter("name")== "Annuler") 
+//		{
+//			doGet(request, response);
+//		}
+		String name = request.getParameter("name");
+		System.out.println(name);
 		
 		// Création de mon profil
 		String pseudo = request.getParameter("Pseudo");
@@ -78,6 +83,5 @@ public class MonProfilServlet extends HttpServlet {
 		doGet(request, response);
 	}	
 		
-	}
-
+}
 

@@ -61,7 +61,7 @@ public class SeConnecterServlet extends HttpServlet {
 		}
 		finally 
 		{
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/se_connecter.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/seConnecter.jsp");
 			if (rd != null) 
 			{
 			rd.forward(request, response);
