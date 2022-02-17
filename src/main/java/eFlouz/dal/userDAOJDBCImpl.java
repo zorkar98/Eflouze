@@ -66,16 +66,23 @@ public class userDAOJDBCImpl  {
 		System.out.println("resulset : "+presenceEnBase);
 		//VERIFIER si l'email ou/et le pseudo est/sont trouv�(s)
 		
-			rs.next();
-			if (rs.getString("pseudo").trim().equals(pseudo.trim()))
-					{presenceEnBase++;}
-			
-			if (rs.getString("email").trim().equals(email.trim()))
-					{presenceEnBase+=2;}
-			if (rs.getString("pseudo").trim().equals(pseudo.trim()) && rs.getString("email").trim().equals(email.trim())) {
-				presenceEnBase = 3;
-			
-		}
+		if (rs.next()) {
+			do {
+
+			if (rs.getString("pseudo").trim().equals(pseudo.trim())){
+			presenceEnBase= presenceEnBase+1;
+			System.out.println("resultset pseudo " + presenceEnBase);
+			}
+
+			else if (rs.getString("email").trim().equals(email.trim())){
+			presenceEnBase= presenceEnBase+2;
+			System.out.println("resultset email " + presenceEnBase);
+			}
+			else if (rs.getString("pseudo").trim().equals(pseudo.trim()) && rs.getString("email").trim().equals(email.trim())) {
+			presenceEnBase = 3;
+			}
+			}while(rs.next());
+			}
 		
 		System.out.println("resulset2 : " + presenceEnBase);
 			

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html class="html">
 <head>
@@ -14,11 +17,11 @@ pageEncoding="UTF-8"%>
 
 
 <h1 class="title">Bonjour</h1>
-<%if(request.getAttribute("couleur")!= "red"){ %>
-<span style="color: black" class="message" >Se connecter à eFlouz</span>
-<%}else { %>
-<span style="color: red" class="message" >!!! Indentifiants de connexion non valides !!!</span>
-<%} %>
+<c:choose>
+  <c:when test="requestScope.couleur != red"><span style="color: black" class="message"><P>Se connecter à eFlouz</P></span></c:when>
+  <c:when test="requestScope.couleur == red"><span style="color: red" class="message"><p>!!! Indentifiants de
+		connexion non valides !!!</p></span></c:when>
+	</c:choose>
 <br>
 <form action="<%=request.getContextPath()%>/seConnecterServlet" method="post" class="form">
 <input class="form_item" type="text" name="email" placeholder="Adresse e-mail">

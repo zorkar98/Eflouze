@@ -12,28 +12,9 @@
 	href="${pageContext.request.contextPath}/CSS/CSSConnexion/style.css">
 </head>
 <body class="body">
-	<h1 class="title">Bonjour</h1>
+	<h1 class="title">Création de compte eFlouz</h1>
 
-	<c:choose>
-  <c:when test="requestScope.couleur != red"><span style="color: black" class="message">Création de compte
-		eFlouz</span></c:when>
-  <c:when test="requestScope.couleur == red"><span style="color: red" class="message">!!! Indentifiants de
-		connexion non valides !!!</span></c:when>
-	</c:choose>
 
-	 <%-- <%
-	if (request.getAttribute("couleur") != "red") {
-	%>
-	<span style="color: black" class="message">Création de compte
-		eFlouz</span>
-	<%
-	} else {
-	%>
-	<span style="color: red" class="message">!!! Indentifiants de
-		connexion non valides !!!</span>
-	<%
-	}
-	%>  --%>
 	<br>
 	<form  action="${pageContext.request.contextPath }/Profil" method="post" class="form">
 		<div class="div">
