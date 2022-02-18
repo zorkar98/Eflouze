@@ -12,7 +12,7 @@
 
 	<div class="header">
 		<h1>eFlouz</h1>
-		<a href="">S'inscrire/Se connecter</a>
+		<a href="./SeConnecterServlet">S'inscrire/Se connecter</a>
 	</div>
 		<div class="sub_header">
 			<h1>Liste des enchères</h1>
