@@ -13,10 +13,8 @@
 </head>
 <body class="body">
 	<h1 class="title">Création de compte eFlouz</h1>
-
-
 	<br>
-	<form  action="./Profil" method="post" class="form">
+	<form  action="./monProfil" method="post" class="form">
 		<div class="div">
 			<input class="form_item" type="text" name="Pseudo" placeholder="Pseudo"> 
 			<input class="form_item" type="text" name="Nom" placeholder="Nom">
@@ -44,6 +42,5 @@
 		</div>
 	</form>
 	<p class="message_creation"> ${requestScope.Succes}${requestScope.Pseudo}${requestScope.Email}${requestScope.Both}</p>
-	
 </body>
 </html>
