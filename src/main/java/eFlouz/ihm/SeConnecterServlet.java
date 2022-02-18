@@ -61,7 +61,7 @@ public class SeConnecterServlet extends HttpServlet {
 // TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/se_connecter.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/seConnecter.jsp");
 			if (rd != null) {
 				rd.forward(request, response);
 			}
@@ -73,9 +73,9 @@ public class SeConnecterServlet extends HttpServlet {
 		String nomSession = null;
 		String prenomSession = null;
 		String emailSession = null;
-		int telephoneSession = (Integer) null;
+		int telephoneSession =  0;
 		String rueSession = null;
-		int code_postalSession = (Integer) null;
+		int code_postalSession =  0;
 		String villeSession = null;
 		String mot_de_passeSession = null;
 		User userSession = new User(pseudoSession, nomSession, prenomSession, emailSession, telephoneSession,

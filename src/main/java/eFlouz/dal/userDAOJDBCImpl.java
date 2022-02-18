@@ -20,9 +20,9 @@ public class userDAOJDBCImpl {
 		String pseudo = null;
 		String nom = null;
 		String prenom = null;
-		int telephone = (Integer) null;
+		int telephone = 0;
 		String rue = null;
-		int code_postal = (Integer) null;
+		int code_postal =  0;
 		String ville = null;
 		User userSession = new User(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe);
 //Connection + Requete SELECT WHERE email = ? and mot_de_passe = ?
