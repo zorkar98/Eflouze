@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
-import eFlouz.bll.User_manager;
+import eFlouz.bll.UserManager;
 import eFlouz.bo.User;
 
 /**
@@ -39,7 +39,7 @@ public class SupprimerCompteServlet extends HttpServlet {
 		String mdp = user.getMot_de_passe();
 		String confirmation = null;
 		try {
-			confirmation = User_manager.supprimerCompte(email, mdp);
+			confirmation = UserManager.supprimerCompte(email, mdp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

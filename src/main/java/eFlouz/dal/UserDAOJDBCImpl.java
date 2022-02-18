@@ -7,17 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import eFlouz.bo.User;
 
-public class userDAOJDBCImpl {
+public class UserDAOJDBCImpl {
 	boolean flag = false;
-	private static final String SELECT = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur "
+	private static final String SELECT_USER = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur "
 			+ "FROM [UTILISATEURS] " + "WHERE (email = ? and mot_de_passe = ?)";
-	private static final String SELECT_BY_PSEUDO_AND_EMAIL = "SELECT pseudo, email FROM UTILISATEURS WHERE (pseudo=? OR email=?)";
-	private static final String INSERT = "INSERT into UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe,credit, administrateur) "
+	private static final String SELECT_USER_BY_PSEUDO_AND_EMAIL = "SELECT pseudo, email FROM UTILISATEURS WHERE (pseudo=? OR email=?)";
+	private static final String INSERT_USER = "INSERT into UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe,credit, administrateur) "
 			+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String DELETE_BY_EMAIL_AND_MDP = "DELETE * FROM [UTILISATEURS] " + "WHERE (email = ? and mot_de_passe = ?)";
+	private static final String DELETE_USER_BY_EMAIL_AND_MDP = "DELETE * FROM [UTILISATEURS] " + "WHERE (email = ? and mot_de_passe = ?)";
 
 //Méthode de création d'un user à stocker dans la session
-	public static User creationSession(String email, String mot_de_passe) throws Exception {
+	public static User selectUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
 		String pseudo = null;
 		String nom = null;
 		String prenom = null;
@@ -28,7 +28,7 @@ public class userDAOJDBCImpl {
 		User userSession = new User(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe);
 //Connection + Requete SELECT WHERE email = ? and mot_de_passe = ?
 		Connection cnx = ConnectionProvider.getConnection();
-		PreparedStatement rqt = cnx.prepareStatement(SELECT);
+		PreparedStatement rqt = cnx.prepareStatement(SELECT_USER);
 		rqt.setString(1, userSession.getEmail());
 		rqt.setString(2, userSession.getMot_de_passe());
 		ResultSet rs = rqt.executeQuery();
@@ -46,10 +46,10 @@ public class userDAOJDBCImpl {
 		return userSession;
 	}
 
-	public void ajouterUser(User userAjoute) throws Exception {
+	public void insertUser(User userAjoute) throws Exception {
 // Connection + Requete INSERT avec IDENTITY KEY
 		Connection cnx = ConnectionProvider.getConnection();
-		PreparedStatement rqt = cnx.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+		PreparedStatement rqt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
 //crï¿½ation user ï¿½ ajouter
 		rqt.setString(1, userAjoute.getPseudo());
 		rqt.setString(2, userAjoute.getNom());
@@ -73,10 +73,10 @@ public class userDAOJDBCImpl {
 	}
 
 //
-	public int selectByPseudoAndEmail(String pseudo, String email) throws Exception {
+	public int selectUserByPseudoAndEmail(String pseudo, String email) throws Exception {
 // Connection + Requete SELECT PSEUDO ET EMAIL
 		Connection cnx = ConnectionProvider.getConnection();
-		PreparedStatement rqt = cnx.prepareStatement(SELECT_BY_PSEUDO_AND_EMAIL);
+		PreparedStatement rqt = cnx.prepareStatement(SELECT_USER_BY_PSEUDO_AND_EMAIL);
 //Creation requete avec pseudo et email en parametre de methode
 		rqt.setString(1, pseudo);
 		rqt.setString(2, email);
@@ -107,9 +107,9 @@ public class userDAOJDBCImpl {
 		return presenceEnBase;
 	}
 
-	public boolean seConnecter(User user) throws Exception {
+	public boolean selectUser(User user) throws Exception {
 		Connection cnx = ConnectionProvider.getConnection();
-		PreparedStatement rqt = cnx.prepareStatement(SELECT);
+		PreparedStatement rqt = cnx.prepareStatement(SELECT_USER);
 		rqt.setString(1, user.getEmail());
 		rqt.setString(2, user.getMot_de_passe());
 		ResultSet rs = rqt.executeQuery();
@@ -130,13 +130,13 @@ public class userDAOJDBCImpl {
 		return flag;
 	}
 	//Fonction de suppression de compte à partir de l'email et du mot de passse
-	public static String deleteByEmailAndMdp(String email, String mot_de_passe) throws Exception {
+	public static String deleteUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
 
 	String confirmation;
 
 	// Connection + Requete DELETE EMAIL & MDP
 	Connection cnx = ConnectionProvider.getConnection();
-	PreparedStatement rqt = cnx.prepareStatement(DELETE_BY_EMAIL_AND_MDP);
+	PreparedStatement rqt = cnx.prepareStatement(DELETE_USER_BY_EMAIL_AND_MDP);
 	//Creation requete avec email et mot_de_passe en parametre de methode
 	rqt.setString(1, email);
 	rqt.setString(2, mot_de_passe);

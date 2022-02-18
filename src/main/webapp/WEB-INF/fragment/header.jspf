@@ -23,8 +23,5 @@
 		<a href="./Deconnexion">./Déconnexion</a>
 	</div>
 	</c:if>
-	
-	<a href="./SeConnecterServlet">S'inscrire/Se connecter</a>
-	</div>
 </body>
 </html>
