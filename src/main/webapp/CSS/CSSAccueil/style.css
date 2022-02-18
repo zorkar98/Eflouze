@@ -42,8 +42,10 @@ body{
 	margin: 10px auto 0px 0px;
 }
 .submit input{
-	width: 300px;
-	height: 60px;
+	position : fixed;
+	min-width : 150px;
+	width: 20%;
+	height: 5%;
 }
 
 .sub_header {
