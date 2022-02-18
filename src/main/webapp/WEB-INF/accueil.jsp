@@ -31,7 +31,7 @@
 				<a>Nom de l'article :</a>
 				<p>Prix :</p>
 				<p>Fin de l'enchère :</p>
-					<p>Vendeur : <a href="${pageContext.request.contextPath}/home?titre=JOJO44">JOJO44</a></p>
+					<p>Vendeur : <a href="${pageContext.request.contextPath}/profil?titre=JOJO44">JOJO44</a></p>
 			</div>
 			<div class="mes_enchere">
 				<img alt="" src="">
