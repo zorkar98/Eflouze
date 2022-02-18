@@ -30,7 +30,7 @@ public class MonProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/monProfil.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/home");
 		if (rd != null) {
 			rd.forward(request, response);
 		}
@@ -71,9 +71,9 @@ public class MonProfilServlet extends HttpServlet {
 		String both = null;
 		switch (presenceBase) {
 		case 0 :  succes = "Votre compte à été ajouter avec succès";System.out.println(succes); break;
-		case 1 :  pseudoProfil = "Le pseudo est déjà utilisé, Votre compte n'à pas été ajouter désolé";System.out.println(pseudoProfil); break;
-		case 2 :  emailProfil = "L'email est déjà utilisé, Votre compte n'à pas été ajouter désolé";System.out.println(emailProfil); break;
-		case 3 :  both = "Le pseudo et l'email sont déjà utilisés, vérifier si vous n'avez pas déjà un compte";	System.out.println(both);
+		case 1 :  pseudoProfil = "Le pseudo est déjà utilisé, Votre compte n'à pas été ajouter désolé"; break;
+		case 2 :  emailProfil = "L'email est déjà utilisé, Votre compte n'à pas été ajouter désolé"; break;
+		case 3 :  both = "Le pseudo et l'email sont déjà utilisés, vérifier si vous n'avez pas déjà un compte";
 		}
 			request.setAttribute("Succes", succes);
 			request.setAttribute("Pseudo", pseudoProfil);

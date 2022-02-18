@@ -56,15 +56,19 @@ public class SeConnecterServlet extends HttpServlet {
 			if (userOk != true) {
 				String couleur = "red";
 				request.setAttribute("couleur", couleur);
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/seConnecter.jsp");
+				if (rd != null) {
+					rd.forward(request, response);
+				}
 			}
 		} catch (Exception e) {
 // TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/seConnecter.jsp");
+		}
+			RequestDispatcher rd = request.getRequestDispatcher("/home");
 			if (rd != null) {
 				rd.forward(request, response);
-			}
+			
 			System.out.println("Servlet" + userOk);
 		}
 //Création de la session

@@ -37,7 +37,7 @@ public class userDAOJDBCImpl {
 		userSession.setNom(rs.getString("nom"));
 		userSession.setPrenom(rs.getString("prenom"));
 		userSession.setEmail(rs.getString("email"));
-		userSession.setTelephone(rs.getInt("telephone"));
+		userSession.setTelephone(rs.getFloat("telephone"));
 		userSession.setRue(rs.getString("rue"));
 		userSession.setCode_postal(rs.getInt("code_postal"));
 		userSession.setVille(rs.getString("ville"));
