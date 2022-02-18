@@ -9,11 +9,8 @@
 </head>
 <body>
 
-
-	<div class="header">
-		<h1>eFlouz</h1>
-		<a href="./SeConnecterServlet">S'inscrire/Se connecter</a>
-	</div>
+	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+	
 		<div class="sub_header">
 			<h1>Liste des enchères</h1>
 		</div>
@@ -34,7 +31,7 @@
 				<a>Nom de l'article :</a>
 				<p>Prix :</p>
 				<p>Fin de l'enchère :</p>
-				<p>Vendeur :</p>
+					<p>Vendeur : <a href="${pageContext.request.contextPath}/home?titre=JOJO44">JOJO44</a></p>
 			</div>
 			<div class="mes_enchere">
 				<img alt="" src="">
