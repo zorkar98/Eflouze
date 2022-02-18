@@ -42,5 +42,4 @@ public class AccueillirServlet extends HttpServlet {
 		
 		doGet(request, response);
 	}
-
 }
