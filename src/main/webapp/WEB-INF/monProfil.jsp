@@ -16,7 +16,7 @@
 
 
 	<br>
-	<form  action="/home" class="form">
+	<form  action="./Profil" method="post" class="form">
 		<div class="div">
 			<input class="form_item" type="text" name="Pseudo" placeholder="Pseudo"> 
 			<input class="form_item" type="text" name="Nom" placeholder="Nom">

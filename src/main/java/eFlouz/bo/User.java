@@ -129,6 +129,11 @@ public class User {
 	}
 
 
+	public User(Object attribute) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getEmail() {
 		return email;
 	}

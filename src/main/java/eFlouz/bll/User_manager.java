@@ -50,4 +50,11 @@ public class User_manager {
 		return presenceEnBase ;
 		
 	}
+	//Fonction permettant l'appel de la fonction deleteByEmailAndMdp de la dal
+	public static String supprimerCompte (String email, String mdp) throws Exception {
+
+	String confirmation;
+	confirmation = userDAOJDBCImpl.deleteByEmailAndMdp(email,mdp);
+	return confirmation;
+	}
 }

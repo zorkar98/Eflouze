@@ -30,7 +30,7 @@ public class MonProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/home");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/monProfil.jsp");
 		if (rd != null) {
 			rd.forward(request, response);
 		}
