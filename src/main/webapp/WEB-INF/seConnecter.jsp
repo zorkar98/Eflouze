@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
     <p style="color: red" class="message">!!! Indentifiants de connexion non valides !!! </p>
   	</c:if>
 <br>
-<form action="${pageContext.request.contextPath }/SeConnecterServlet" method="post" class="form">
+<form action="${pageContext.request.contextPath }/connection" method="post" class="form">
 <input class="form_item" type="text" name="email" placeholder="Adresse e-mail">
 <input class="form_item" type="password" name="mot_de_passe" placeholder="Mot de passe">
 <input class="form_item" type="submit" value="Connexion">
@@ -34,13 +34,6 @@ pageEncoding="UTF-8"%>
 </div>
 </form>
 <br>
-
-<a href="./Profil" ><button class="button" >Créer un compte</button></a>
-
-
-
-
-
-
+<a href="./monProfil" ><button class="button" >Créer un compte</button></a>
 </body>
 </html>

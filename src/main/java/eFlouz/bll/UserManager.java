@@ -1,23 +1,23 @@
 package eFlouz.bll;
 
 import eFlouz.bo.User;
-import eFlouz.dal.userDAOJDBCImpl;
+import eFlouz.dal.UserDAOJDBCImpl;
 
-public class User_manager {
+public class UserManager {
 	
 // Création d'un compte utilisateur	
-	userDAOJDBCImpl userOkDao = new userDAOJDBCImpl();
+	UserDAOJDBCImpl userOkDao = new UserDAOJDBCImpl();
 	public boolean interrogerBase(String email,String mdp) throws Exception{
 
 	boolean userOk = false;
 	User user = new User(email, mdp);
 	try {
-		userOk = userOkDao.seConnecter(user);
+		userOk = userOkDao.selectUser(user);
 	} catch (Exception e) {
 	
 		e.printStackTrace();
 	}
-	System.out.println("User_manager" + userOk);
+	System.out.println("UserManager" + userOk);
 	System.out.println(user.getEmail());
 	System.out.println(user.getMot_de_passe());
 	return (boolean) userOk;
@@ -30,7 +30,7 @@ public class User_manager {
 		int presenceEnBase = 12;
 //R�ccup�r�ration de l'info si le pseudo ou l'email sont d�j� inscrit en base
 		try {
-			presenceEnBase = userOkDao.selectByPseudoAndEmail (pseudo,email);
+			presenceEnBase = userOkDao.selectUserByPseudoAndEmail (pseudo,email);
 			System.out.println(presenceEnBase);
 		
 		//Si il ne sont pas pr�sents l'inscription peut continuer
@@ -38,15 +38,15 @@ public class User_manager {
 		
 			User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
 			
-			userDAOJDBCImpl userDAOJDBCImpl = new userDAOJDBCImpl();
-				userDAOJDBCImpl.ajouterUser(user);
+			UserDAOJDBCImpl userDAOJDBCImpl = new UserDAOJDBCImpl();
+				userDAOJDBCImpl.insertUser(user);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		
 //Return de l'info si le pseudo ou l'email sont d�j� pris pour l'IHM
-		System.out.println("User_Manager : " + presenceEnBase);
+		System.out.println("UserManager : " + presenceEnBase);
 		return presenceEnBase ;
 		
 	}
@@ -54,7 +54,7 @@ public class User_manager {
 	public static String supprimerCompte (String email, String mdp) throws Exception {
 
 	String confirmation;
-	confirmation = userDAOJDBCImpl.deleteByEmailAndMdp(email,mdp);
+	confirmation = UserDAOJDBCImpl.deleteUserByEmailAndMdp(email,mdp);
 	return confirmation;
 	}
 }

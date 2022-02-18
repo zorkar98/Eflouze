@@ -6,11 +6,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSAccueil/style.css">
 </head>
 <body>
-	
 	<c:if test="${empty sessionScope.user}">
 	<div class="header">
 		<h1>eFlouz</h1>
-		<a href="./SeConnecterServlet">S'inscrire/Se connecter</a>
+		<a href="./connection">S'inscrire/Se connecter</a>
 	</div>
 	</c:if>
 	<c:if test="${not empty sessionScope.user }">
@@ -19,9 +18,8 @@
 		<a href="./Enchères">Enchères</a>
 		<a href="./Vente/Article">Vendre un article</a>
 		<a href="./profil?user="${sessionScope.user}">Mon profil</a>
-		<a href="./Deconnexion">./Déconnexion</a>
+		<a href="./deconnexion">Déconnexion</a>
 	</div>
 	</c:if>
-
 </body>
 </html>

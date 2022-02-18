@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import eFlouz.bll.User_manager;
+import eFlouz.bll.UserManager;
 
 /**
  * Servlet implementation class MonProfil
  */
-@WebServlet("/Profil")
+@WebServlet("/monProfil")
 public class MonProfilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -60,7 +60,7 @@ public class MonProfilServlet extends HttpServlet {
 		String ville = request.getParameter("Ville");
 		String motDePasse = request.getParameter("MotDePasse");
 			
-		User_manager user_manager = new User_manager();
+		UserManager user_manager = new UserManager();
 		int presenceBase = user_manager.ajouterUser(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 		
 		

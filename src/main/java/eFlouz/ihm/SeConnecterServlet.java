@@ -8,17 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import eFlouz.bll.User_manager;
+import eFlouz.bll.UserManager;
 import eFlouz.bo.User;
-import eFlouz.dal.userDAOJDBCImpl;
+import eFlouz.dal.UserDAOJDBCImpl;
 
 /**
  * Servlet implementation class se_connecterServlet
  */
-@WebServlet("/SeConnecterServlet")
+@WebServlet("/connection")
 public class SeConnecterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private User_manager usermanager;
+
+	private UserManager usermanager;
+
+
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -47,9 +50,12 @@ public class SeConnecterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String mdp = request.getParameter("mot_de_passe");
-		User_manager user_manager = new User_manager();
+
+		UserManager user_manager = new UserManager();
+
+
 		boolean userOk = false;
-		User_manager userValide = new User_manager();
+		UserManager userValide = new UserManager();
 	
 // Se Connecter à une session utilisateur		
 		try {
@@ -80,7 +86,7 @@ public class SeConnecterServlet extends HttpServlet {
 				User userSession = new User(pseudoSession, nomSession, prenomSession, emailSession, telephoneSession,
 						rueSession, code_postalSession, villeSession, mot_de_passeSession);
 				try {
-					userSession = userDAOJDBCImpl.creationSession(email, mdp);
+					userSession = UserDAOJDBCImpl.selectUserByEmailAndMdp(email, mdp);
 					session.setAttribute("user", userSession);
 					
 				} catch (Exception e) {
