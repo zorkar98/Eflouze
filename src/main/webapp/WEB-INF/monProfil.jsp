@@ -40,7 +40,7 @@
 		<br>
 		<div class="div_submit">
 			<input class="form_item_submit" type="submit" value="Créer" name="Creer" > 
-			<a href="./SeConnecterServlet" ><input class="form_item_submit" type="button" value="Annuler" name="Annuler"></a>
+			<a href="${pageContext.request.contextPath }/home" ><input class="form_item_submit" type="button" value="Annuler" name="Annuler"></a>
 		</div>
 	</form>
 	<p class="message_creation"> ${requestScope.Succes}${requestScope.Pseudo}${requestScope.Email}${requestScope.Both}</p>
