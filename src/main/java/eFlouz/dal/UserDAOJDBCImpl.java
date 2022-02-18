@@ -4,7 +4,7 @@ package eFlouz.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import eFlouz.bo.User;
 
 public class UserDAOJDBCImpl {
@@ -140,7 +140,6 @@ public class UserDAOJDBCImpl {
 	//Creation requete avec email et mot_de_passe en parametre de methode
 	rqt.setString(1, email);
 	rqt.setString(2, mot_de_passe);
-	ResultSet rs = rqt.executeQuery();
 
 	confirmation = "Votre compte à bien été supprimé !";
 

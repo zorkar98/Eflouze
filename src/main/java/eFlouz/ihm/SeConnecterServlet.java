@@ -19,10 +19,6 @@ import eFlouz.dal.UserDAOJDBCImpl;
 public class SeConnecterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private UserManager usermanager;
-
-
-
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -50,9 +46,6 @@ public class SeConnecterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String mdp = request.getParameter("mot_de_passe");
-
-		UserManager user_manager = new UserManager();
-
 
 		boolean userOk = false;
 		UserManager userValide = new UserManager();
