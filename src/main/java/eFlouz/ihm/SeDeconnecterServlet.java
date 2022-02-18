@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class TesterSessionInit
  */
-@WebServlet("/Deconnexion")
+@WebServlet("/deconnexion")
 public class SeDeconnecterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

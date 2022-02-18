@@ -14,7 +14,7 @@ import eFlouz.bll.UserManager;
 /**
  * Servlet implementation class MonProfil
  */
-@WebServlet("/Profil")
+@WebServlet("/monProfil")
 public class MonProfilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
