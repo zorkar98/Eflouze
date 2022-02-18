@@ -14,14 +14,14 @@
 	</div>
 	<div class="container2">
 		<div class="info_profil">
-			<p>Pseudo : JOJO44</p>
-			<p>Nom : Garou</p>
-			<p>Prénom : L'intermittent</p>
-			<p>Email : garou.lintermittent@spectacle.jojo</p>
-			<p>Téléphone : 0666666666</p>
-			<p>Rue : 8 rue Garou gorille</p>
-			<p>Code postal : 66666</p>
-			<p>Ville : TrouVille</p>
+			<p>Pseudo : ${requestScope.userSession.pseudo}</p>
+			<p>Nom : ${requestScope.userSession.nom}</p>
+			<p>Prénom : ${requestScope.userSession.prenom}</p>
+			<p>Email : ${requestScope.userSession.email}</p>
+			<p>Téléphone : ${requestScope.userSession.no_telephone}</p>
+			<p>Rue : ${requestScope.userSession.rue}</p>
+			<p>Code postal : ${requestScope.userSession.code_postal}</p>
+			<p>Ville : ${requestScope.userSession.ville}</p>
 		</div>
 	</div>
 </body>
