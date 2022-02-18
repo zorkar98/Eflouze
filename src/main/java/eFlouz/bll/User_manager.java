@@ -4,6 +4,8 @@ import eFlouz.bo.User;
 import eFlouz.dal.userDAOJDBCImpl;
 
 public class User_manager {
+	
+// Création d'un compte utilisateur	
 	userDAOJDBCImpl userOkDao = new userDAOJDBCImpl();
 	public boolean interrogerBase(String email,String mdp) throws Exception{
 
@@ -12,7 +14,7 @@ public class User_manager {
 	try {
 		userOk = userOkDao.seConnecter(user);
 	} catch (Exception e) {
-		// TODO Auto-generated catch block
+	
 		e.printStackTrace();
 	}
 	System.out.println("User_manager" + userOk);
@@ -22,11 +24,11 @@ public class User_manager {
 	}	
 	
 	
-	//Fonction d'enregistrement d'un nouvel utilisateur
+//Fonction d'enregistrement d'un nouvel utilisateur
 	public int ajouterUser (String pseudo, String nom, String prenom, String email, float telephone, String rue, int code_postal,
 			String ville, String mot_de_passe) {
 		int presenceEnBase = 12;
-		//R�ccup�r�ration de l'info si le pseudo ou l'email sont d�j� inscrit en base
+//R�ccup�r�ration de l'info si le pseudo ou l'email sont d�j� inscrit en base
 		try {
 			presenceEnBase = userOkDao.selectByPseudoAndEmail (pseudo,email);
 			System.out.println(presenceEnBase);
@@ -43,7 +45,7 @@ public class User_manager {
 				e.printStackTrace();
 			}
 		
-		//Return de l'info si le pseudo ou l'email sont d�j� pris pour l'IHM
+//Return de l'info si le pseudo ou l'email sont d�j� pris pour l'IHM
 		System.out.println("User_Manager : " + presenceEnBase);
 		return presenceEnBase ;
 		

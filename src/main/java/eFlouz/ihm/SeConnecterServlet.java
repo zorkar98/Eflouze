@@ -44,13 +44,14 @@ public class SeConnecterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String mdp = request.getParameter("mot_de_passe");
 		User_manager user_manager = new User_manager();
 		boolean userOk = false;
 		User_manager userValide = new User_manager();
+	
+// Se Connecter à une session utilisateur		
 		try {
 			userOk = userValide.interrogerBase(email, mdp);
 			if (userOk != true) {
@@ -62,41 +63,34 @@ public class SeConnecterServlet extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
-// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//Création de la session
+				HttpSession session = request.getSession();
+				
+				String pseudoSession = null;
+				String nomSession = null;
+				String prenomSession = null;
+				String emailSession = null;
+				float telephoneSession =  0;
+				String rueSession = null;
+				int code_postalSession =  0;
+				String villeSession = null;
+				String mot_de_passeSession = null;
+				User userSession = new User(pseudoSession, nomSession, prenomSession, emailSession, telephoneSession,
+						rueSession, code_postalSession, villeSession, mot_de_passeSession);
+				try {
+					userSession = userDAOJDBCImpl.creationSession(email, mdp);
+					session.setAttribute("user", userSession);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			System.out.println(session.getAttribute("user"));
+		
 			RequestDispatcher rd = request.getRequestDispatcher("/home");
 			if (rd != null) {
 				rd.forward(request, response);
-			
-			System.out.println("Servlet" + userOk);
-		}
-//Création de la session
-		HttpSession session = request.getSession();
-		String pseudoSession = null;
-		String nomSession = null;
-		String prenomSession = null;
-		String emailSession = null;
-		int telephoneSession =  0;
-		String rueSession = null;
-		int code_postalSession =  0;
-		String villeSession = null;
-		String mot_de_passeSession = null;
-		User userSession = new User(pseudoSession, nomSession, prenomSession, emailSession, telephoneSession,
-				rueSession, code_postalSession, villeSession, mot_de_passeSession);
-		try {
-			userSession = userDAOJDBCImpl.creationSession(email, mdp);
-			session.setAttribute("pseudo", userSession.getPseudo());
-			session.setAttribute("nom", userSession.getNom());
-			session.setAttribute("prenom", userSession.getPrenom());
-			session.setAttribute("email", userSession.getEmail());
-			session.setAttribute("telephone", userSession.getTelephone());
-			session.setAttribute("rue", userSession.getRue());
-			session.setAttribute("code_postal", userSession.getCode_postal());
-			session.setAttribute("ville", userSession.getVille());
-			session.setAttribute("mot_de_passe", userSession.getMot_de_passe());
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 }

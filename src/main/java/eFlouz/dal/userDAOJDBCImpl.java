@@ -32,7 +32,7 @@ public class userDAOJDBCImpl {
 		rqt.setString(2, userSession.getMot_de_passe());
 		ResultSet rs = rqt.executeQuery();
 		rs.next();
-//Attribution des donnée réccupérées avec le SELECT à notre user
+//Attribution des donnée récupérées avec le SELECT à notre user
 		userSession.setPseudo(rs.getString("pseudo"));
 		userSession.setNom(rs.getString("nom"));
 		userSession.setPrenom(rs.getString("prenom"));
