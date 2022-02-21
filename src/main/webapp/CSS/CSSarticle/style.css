@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.header {
+	
+	display: flex;
+	justify-content: space-between;
+}
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.description_taille {
+	display : flex;
+	height: 50px;
+}

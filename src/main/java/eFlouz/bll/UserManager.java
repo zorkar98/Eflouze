@@ -7,7 +7,9 @@ public class UserManager {
 	
 // Création d'un compte utilisateur	
 	UserDAOJDBCImpl userOkDao = new UserDAOJDBCImpl();
-	public boolean interrogerBase(String email,String mdp) throws Exception{
+	
+//Fonction
+	public boolean seConnecter(String email,String mdp) throws Exception{
 
 	boolean userOk = false;
 	User user = new User(email, mdp);
