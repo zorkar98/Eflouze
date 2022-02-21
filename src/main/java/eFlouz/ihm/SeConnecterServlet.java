@@ -66,21 +66,23 @@ public class SeConnecterServlet extends HttpServlet {
 		}
 		//Création de la session
 				HttpSession session = request.getSession();
-				
+				int noUtilisateur = 0;
 				String pseudoSession = null;
 				String nomSession = null;
 				String prenomSession = null;
 				String emailSession = null;
-				float telephoneSession =  0;
+				String telephoneSession = null;
 				String rueSession = null;
 				int code_postalSession =  0;
 				String villeSession = null;
 				String mot_de_passeSession = null;
-				User userSession = new User(pseudoSession, nomSession, prenomSession, emailSession, telephoneSession,
-						rueSession, code_postalSession, villeSession, mot_de_passeSession);
+				int credit = 0;
+				User userSession = new User(noUtilisateur, pseudoSession, nomSession, prenomSession, emailSession, telephoneSession,
+						rueSession, code_postalSession, villeSession, mot_de_passeSession, credit);
 				try {
 					userSession = UserDAOJDBCImpl.selectUserByEmailAndMdp(email, mdp);
 					session.setAttribute("user", userSession);
+					session.setMaxInactiveInterval(3000);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
