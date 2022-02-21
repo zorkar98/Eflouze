@@ -52,7 +52,7 @@ public class SeConnecterServlet extends HttpServlet {
 	
 // Se Connecter à une session utilisateur		
 		try {
-			userOk = userValide.interrogerBase(email, mdp);
+			userOk = userValide.seConnecter(email, mdp);
 			if (userOk != true) {
 				String couleur = "red";
 				request.setAttribute("couleur", couleur);
