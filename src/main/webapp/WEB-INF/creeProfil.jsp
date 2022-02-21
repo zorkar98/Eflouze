@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>eFlouze - Page de création de compte</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/CSS/CSSConnexion/style.css">
+	href="${pageContext.request.contextPath}/CSS/CSSconnexion/style.css">
 </head>
 <body class="body">
 	<h1 class="title">Création de compte eFlouz</h1>
