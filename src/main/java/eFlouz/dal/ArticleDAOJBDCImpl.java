@@ -17,10 +17,11 @@ public class ArticleDAOJBDCImpl {
 		// Connection + Requete INSERT avec IDENTITY KEY
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
-		// crï¿½ation user ï¿½ ajouter
+		//Passage de LocalDate (java) à Date (sql)
 		java.sql.Date sqlDateDebutEnchre = java.sql.Date.valueOf(articleAjoute.getDateDebutEnchere());
 		java.sql.Date sqlDateFinEnchre = java.sql.Date.valueOf(articleAjoute.getDateFinEnchere());
 
+		// crï¿½ation article ï¿½ ajouter
 		rqt.setInt(1, articleAjoute.getNoArticle());
 		rqt.setString(2, articleAjoute.getNomArticle());
 		rqt.setString(3, articleAjoute.getDescription());
