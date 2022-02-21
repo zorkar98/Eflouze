@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Accueil eFlouz</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSAccueil/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSaccueil/style.css">
 </head>
 <body>
 	<c:choose>
