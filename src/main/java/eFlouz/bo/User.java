@@ -7,7 +7,7 @@ public class User {
 	private String nom;
 	private String prenom;
 	private String email;
-	private float telephone;
+	private String telephone;
 	private String rue;
 	private int code_postal;
 	private String ville;
@@ -42,12 +42,12 @@ public class User {
 	}
 
 
-	public float getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
 
 
-	public void setTelephone(float telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
@@ -114,7 +114,7 @@ public class User {
 	}
 
 
-	public User(String pseudo, String nom, String prenom, String email, float telephone, String rue, int code_postal,
+	public User(String pseudo, String nom, String prenom, String email, String telephone, String rue, int code_postal,
 			String ville, String mot_de_passe) {
 		super();
 		this.pseudo = pseudo;
@@ -126,6 +126,23 @@ public class User {
 		this.code_postal = code_postal;
 		this.ville = ville;
 		this.mot_de_passe = mot_de_passe;
+	}
+
+
+	public User(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			int code_postal, String ville, String mot_de_passe, int credit) {
+		super();
+		this.no_utilisateur = no_utilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.mot_de_passe = mot_de_passe;
+		this.credit = credit;
 	}
 
 
@@ -151,6 +168,11 @@ public class User {
 
 	public void setMot_de_passe(String mot_de_passe) {
 		this.mot_de_passe = mot_de_passe;
+	}
+
+
+	public void setCredit(int credit) {
+		this.credit = credit;
 	}
 	
 	

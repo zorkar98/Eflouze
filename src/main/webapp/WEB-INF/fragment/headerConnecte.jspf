@@ -9,10 +9,11 @@
 <body>
 	<div class="header">
 		<h1>eFlouz</h1>
-		<a href="./Enchères">Enchères</a>
-		<a href="./Vente/Article">Vendre un article</a>
-		<a href="./profil?user = ${sessionScope.user}">Mon profil</a>
-		<a href="./deconnexion">Déconnexion</a>
+		<div class="headerAncres"><a href="./Enchères">Encheres</a>
+		<a href="./Vente/Article">Vendre</a>
+		<a href="./profil" name="${sessionScope.user.pseudo}">Mon_profil</a>
+		<a href="./deconnexion" method="post" name="session">Deconnexion</a>
+		</div>
 	</div>
 </body>
 </html>
