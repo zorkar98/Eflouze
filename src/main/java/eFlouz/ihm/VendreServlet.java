@@ -36,7 +36,13 @@ public class VendreServlet extends HttpServlet {
 		if (rd != null) {
 			rd.forward(request, response);
 		}
-		HttpSession session = request.getSession();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+HttpSession session = request.getSession();
 		
 		String nomArticle = request.getParameter("nomArticle");
 		String description = request.getParameter("description");
@@ -58,17 +64,7 @@ public class VendreServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (rd != null) {
-			rd.forward(request, response);
-		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

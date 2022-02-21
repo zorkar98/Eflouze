@@ -10,7 +10,7 @@
 	<div class="header">
 		<h1>eFlouz</h1>
 		<div class="headerAncres"><a href="./Enchères">Encheres</a>
-		<a href="./Vente/Article">Vendre</a>
+		<a href="./vendre">Vendre</a>
 		<a href="./profil" name="${sessionScope.user.pseudo}">Mon_profil</a>
 		<a href="./deconnexion" method="post" name="session">Deconnexion</a>
 		</div>
