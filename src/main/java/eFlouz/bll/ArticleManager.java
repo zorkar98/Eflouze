@@ -10,11 +10,11 @@ public class ArticleManager {
 	ArticleDAOJBDCImpl articleDao = new ArticleDAOJBDCImpl();
 
 	// Fonction de création d'une nouvelle vente
-	public void ajouterArticle(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial, int noUtilisateur, int noCategorie) throws Exception {
+	public void ajouterArticle(String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, int noUtilisateur) throws Exception {
 
-		Article articleAAjouter = new Article(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres,
-				prixInitial, noUtilisateur, noCategorie);
+		Article articleAAjouter = new Article(nomArticle, description, dateDebutEncheres, dateFinEncheres,
+				prixInitial, noUtilisateur);
 
 		ArticleDAOJBDCImpl articleDAOJBDCImpl = new ArticleDAOJBDCImpl();
 		articleDAOJBDCImpl.insertArticle(articleAAjouter);

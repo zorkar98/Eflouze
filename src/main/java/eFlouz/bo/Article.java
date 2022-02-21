@@ -22,23 +22,16 @@ public class Article {
 	private int noUtilisateur;
 	private int noCategorie;
 
-	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEnchere,
-			LocalDate dateFinEnchere, int prixInitial, int prixVente, int noUtilisateur, int noCategorie) {
+	public Article(String nomArticle, String description, LocalDate dateDebutEnchere,
+			LocalDate dateFinEnchere, int prixInitial ,int noUtilisateur) {
 		super();
-		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.dateDebutEnchere = dateDebutEnchere;
 		this.dateFinEnchere = dateFinEnchere;
 		this.prixInitial = prixInitial;
-		this.prixVente = prixVente;
 		this.noUtilisateur = noUtilisateur;
-		this.noCategorie = noCategorie;
 	}
 
-	public Article(int noArticle2, String nomArticle2, String description2, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial2, int noUtilisateur2, int noCategorie2) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public int getNoArticle() {
 		return noArticle;
