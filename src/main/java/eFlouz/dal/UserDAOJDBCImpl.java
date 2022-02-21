@@ -43,6 +43,8 @@ public class UserDAOJDBCImpl {
 		userSession.setCode_postal(rs.getInt("code_postal"));
 		userSession.setVille(rs.getString("ville"));
 		userSession.setMot_de_passe(rs.getString("mot_de_passe"));
+		
+		cnx.close();
 		return userSession;
 	}
 
@@ -70,6 +72,7 @@ public class UserDAOJDBCImpl {
 				userAjoute.setNo_utilisateur(rs.getInt(1));
 			}
 		}
+		cnx.close();
 	}
 
 //
@@ -104,6 +107,7 @@ public class UserDAOJDBCImpl {
 // SI presence en base = 1 -> pseudo identique
 // SI presence en base = 2 -> email identique
 // SI presence en base = 3 -> les deux identiques
+		cnx.close();
 		return presenceEnBase;
 	}
 
@@ -127,6 +131,7 @@ public class UserDAOJDBCImpl {
 		System.out.println(user.getEmail());
 		System.out.println(user.getMot_de_passe());
 		System.out.println(rs.getString(5));
+		cnx.close();
 		return flag;
 	}
 	//Fonction de suppression de compte à partir de l'email et du mot de passse
@@ -143,6 +148,7 @@ public class UserDAOJDBCImpl {
 
 	confirmation = "Votre compte à bien été supprimé !";
 
+	cnx.close();
 	return confirmation;
 	}
 }
