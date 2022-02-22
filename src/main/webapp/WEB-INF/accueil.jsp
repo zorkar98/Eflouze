@@ -26,7 +26,7 @@
 		<div class="container">
 			<form action="${pageContext.request.contextPath}/home" method="get">
 				<div class="search">
-					<input type="search" placeholder="Le nom de l'article contient" name="rechercher">
+					<input type="search" placeholder="Le nom de l'article contient" name="rechercher" required="required">
 				</div>
 				<div class="submit">
 					<input type="submit" value="Rechercher">
