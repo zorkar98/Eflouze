@@ -30,7 +30,8 @@ public class MonProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/monProfil.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/creeProfil.jsp");
 		if (rd != null) {
 			rd.forward(request, response);
 		}
@@ -42,19 +43,13 @@ public class MonProfilServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		if(request.getParameter("name")== "Annuler") 
-//		{
-//			doGet(request, response);
-//		}
-		String name = request.getParameter("name");
-		System.out.println(name);
 		
 		// Création de mon profil
 		String pseudo = request.getParameter("Pseudo");
 		String nom = request.getParameter("Nom");
 		String prenom = request.getParameter("Prenom");
 		String email = request.getParameter("Email");
-		float telephone = Float.parseFloat(request.getParameter("Telephone"));
+		String telephone = request.getParameter("Telephone");
 		String rue = request.getParameter("Rue");
 		int codePostal = Integer.parseInt(request.getParameter("CodePostal"));
 		String ville = request.getParameter("Ville");

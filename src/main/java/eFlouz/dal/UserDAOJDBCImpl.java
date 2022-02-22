@@ -21,14 +21,16 @@ public class UserDAOJDBCImpl {
 			+ "VALUES (?,?,?,?,?,?,?,?)";
 //Méthode de création d'un user à stocker dans la session
 	public static User selectUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
+		int noUtilisateur = 0;
 		String pseudo = null;
 		String nom = null;
 		String prenom = null;
-		int telephone = 0;
+		String telephone = null;
 		String rue = null;
 		int code_postal =  0;
 		String ville = null;
-		User userSession = new User(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe);
+		int credit = 0;
+		User userSession = new User(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit);
 //Connection + Requete SELECT WHERE email = ? and mot_de_passe = ?
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(SELECT_USER);
@@ -37,17 +39,19 @@ public class UserDAOJDBCImpl {
 		ResultSet rs = rqt.executeQuery();
 		rs.next();
 //Attribution des donnée récupérées avec le SELECT à notre user
+		userSession.setNo_utilisateur(rs.getInt("no_utilisateur"));
 		userSession.setPseudo(rs.getString("pseudo"));
 		userSession.setNom(rs.getString("nom"));
 		userSession.setPrenom(rs.getString("prenom"));
 		userSession.setEmail(rs.getString("email"));
-		userSession.setTelephone(rs.getFloat("telephone"));
+		userSession.setTelephone(rs.getString("telephone"));
 		userSession.setRue(rs.getString("rue"));
 		userSession.setCode_postal(rs.getInt("code_postal"));
 		userSession.setVille(rs.getString("ville"));
 		userSession.setMot_de_passe(rs.getString("mot_de_passe"));
-		
+		userSession.setCredit(rs.getInt("credit"));
 		cnx.close();
+
 		return userSession;
 	}
 
@@ -60,7 +64,7 @@ public class UserDAOJDBCImpl {
 		rqt.setString(2, userAjoute.getNom());
 		rqt.setString(3, userAjoute.getPrenom());
 		rqt.setString(4, userAjoute.getEmail());
-		rqt.setFloat(5, userAjoute.getTelephone());
+		rqt.setString(5, userAjoute.getTelephone());
 		rqt.setString(6, userAjoute.getRue());
 		rqt.setInt(7, userAjoute.getCode_postal());
 		rqt.setString(8, userAjoute.getVille());
@@ -167,7 +171,7 @@ public class UserDAOJDBCImpl {
 		rqt.setString(3, userAModifier.getNom());
 		rqt.setString(4, userAModifier.getPrenom());
 		rqt.setString(5, userAModifier.getEmail());
-		rqt.setFloat(6, userAModifier.getTelephone());
+		rqt.setString(6, userAModifier.getTelephone());
 		rqt.setString(7, userAModifier.getRue());
 		rqt.setInt(8, userAModifier.getCode_postal());
 		rqt.setString(9, userAModifier.getVille());

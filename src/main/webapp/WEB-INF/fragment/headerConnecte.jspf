@@ -4,15 +4,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSAccueil/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSaccueil/style.css">
 </head>
 <body>
 	<div class="header">
 		<h1>eFlouz</h1>
-		<a href="./Enchères">Enchères</a>
-		<a href="./Vente/Article">Vendre un article</a>
-		<a href="./profil?user = ${sessionScope.user}">Mon profil</a>
-		<a href="./deconnexion">Déconnexion</a>
+		<div class="headerAncres"><a href="./Enchères">Encheres</a>
+		<a href="./vendre">Vendre</a>
+		<a href="./profil" name="${sessionScope.user.pseudo}">Mon_profil</a>
+		<a href="./deconnexion" method="post" name="session">Deconnexion</a>
+		</div>
 	</div>
 </body>
 </html>

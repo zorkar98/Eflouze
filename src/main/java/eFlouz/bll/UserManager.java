@@ -27,8 +27,10 @@ public class UserManager {
 	
 	
 //Fonction d'enregistrement d'un nouvel utilisateur
-	public int ajouterUser (String pseudo, String nom, String prenom, String email, float telephone, String rue, int codePostal,
+
+	public int ajouterUser (String pseudo, String nom, String prenom, String email, String telephone, String rue, int codePostal,
 			String ville, String motDePasse) {
+
 		int presenceEnBase = 12;
 //R�ccup�r�ration de l'info si le pseudo ou l'email sont d�j� inscrit en base
 		try {

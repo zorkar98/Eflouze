@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.Session;
+
 /**
  * Servlet implementation class AccueillirServlet
  */
@@ -32,7 +34,7 @@ public class AccueillirServlet extends HttpServlet {
 		request.getParameter("titre");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		if (rd != null) {
-			rd.forward(request, response);
+		rd.forward(request, response);
 		}
 	}
 
@@ -40,8 +42,7 @@ public class AccueillirServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+				
 		doGet(request, response);
 	}
 }

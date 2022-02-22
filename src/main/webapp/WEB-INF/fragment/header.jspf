@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSAccueil/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSaccueil/style.css">
 </head>
 <body>
 	
