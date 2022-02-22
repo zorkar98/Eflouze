@@ -8,15 +8,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSarticle/style.css">
 </head>
 <body class="body">
-	<div class="container">
-		<c:choose>
-	<c:when test="${empty sessionScope}">
-	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
-	</c:when>
-	<c:when test="${not empty sessionScope}">
+	<div class="title">
 	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
-	</c:when>
-	</c:choose>
 		<div>
 			<h1>Nouvelle vente</h1>
 			<form action="">
