@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 <html class="html">
 <head>
 <meta charset="utf-8">
-<title>eFlouze - Page de connexion au compte</title>
+<title>eFlouze - Connexion</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSconnexion/style.css">
 <script src="script.js"></script>
 </head>

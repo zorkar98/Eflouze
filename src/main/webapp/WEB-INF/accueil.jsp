@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Accueil eFlouz</title>
+<title>Accueil</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSaccueil/style.css">
 </head>
 <body class="body">

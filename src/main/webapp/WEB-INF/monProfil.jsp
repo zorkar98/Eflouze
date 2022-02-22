@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eFlouze - Page de création de compte</title>
+<title>eFlouze - Profil</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/CSS/CSSconnexion/style.css">
 </head>

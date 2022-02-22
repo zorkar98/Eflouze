@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>eFlouz</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSafficherProfil/style.css">
 </head>
 <body class="body">
