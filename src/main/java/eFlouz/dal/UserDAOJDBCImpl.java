@@ -14,7 +14,7 @@ public class UserDAOJDBCImpl {
 	private static final String SELECT_USER_BY_PSEUDO_AND_EMAIL = "SELECT pseudo, email FROM UTILISATEURS WHERE (pseudo=? OR email=?)";
 	private static final String INSERT_USER = "INSERT into UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe,credit, administrateur) "
 			+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String DELETE_USER_BY_EMAIL_AND_MDP = "DELETE * FROM [UTILISATEURS] " + "WHERE (email = ? and mot_de_passe = ?)";
+	private static final String DELETE_USER_BY_EMAIL_AND_MDP = "DELETE FROM [UTILISATEURS] WHERE email = ? and mot_de_passe = ?";
 
 //Méthode de création d'un user à stocker dans la session
 	public static User selectUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
@@ -139,9 +139,10 @@ public class UserDAOJDBCImpl {
 		return flag;
 	}
 	//Fonction de suppression de compte à partir de l'email et du mot de passse
-	public static String deleteUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
-
-	String confirmation;
+	public String deleteUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
+		System.out.println("dao " + email);
+		System.out.println("dao " + mot_de_passe);
+	String confirmation = null;
 
 	// Connection + Requete DELETE EMAIL & MDP
 	Connection cnx = ConnectionProvider.getConnection();
@@ -149,10 +150,14 @@ public class UserDAOJDBCImpl {
 	//Creation requete avec email et mot_de_passe en parametre de methode
 	rqt.setString(1, email);
 	rqt.setString(2, mot_de_passe);
-
+	int rs = rqt.executeUpdate();
+	
+	if(rs == 1) {
 	confirmation = "Votre compte à bien été supprimé !";
-
+	}
 	cnx.close();
+	System.out.println(confirmation);
 	return confirmation;
+
 	}
 }

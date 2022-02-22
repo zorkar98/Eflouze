@@ -49,5 +49,6 @@
 				<p>Vendeur :</p>
 			</div>
 		</div>
+		<p>${requestScope.confirmation}</p>
 </body>
 </html>

@@ -10,12 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javax.websocket.Session;
+import org.apache.catalina.Session;
+
 import eFlouz.bll.UserManager;
-
-
-
 import eFlouz.bo.User;
+import eFlouz.dal.UserDAOJDBCImpl;
 
 /**
  * Servlet implementation class SupprimerCompteServlet
@@ -23,14 +22,24 @@ import eFlouz.bo.User;
 @WebServlet("/supprimerCompte")
 public class SupprimerCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	UserManager deleteUserManager = new UserManager();
+	int noUser;
+	String pseudo;
+	String nom;
+	String prenom;
+	String email;
+	String tel;
+	String rue;
+	int codePostal;
+	String ville;
+	String mdp;
+	int credit;
+	User user = new User(noUser , pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, credit);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SupprimerCompteServlet() {
-		super();
-// TODO Auto-generated constructor stub
-	}
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -38,13 +47,19 @@ public class SupprimerCompteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		User user = new User(session.getAttribute("user"));
-		String email = user.getEmail();
-		String mdp = user.getMot_de_passe();
+		HttpSession session = request.getSession(false);
+		user = (User) session.getAttribute("user");
+		email = user.getEmail();
+		user = (User) session.getAttribute("user");
+		mdp = user.getMot_de_passe();
+		System.out.println("ihm" + email + mdp);
 		String confirmation = null;
 		try {
-			confirmation = UserManager.supprimerCompte(email, mdp);
+			confirmation = deleteUserManager.supprimerCompte(email, mdp);
+			if(confirmation != null) 
+			{
+			request.setAttribute("confirmation", confirmation);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,7 +76,7 @@ public class SupprimerCompteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-// TODO Auto-generated method stub
-		doGet(request, response);
+			
+		
 	}
 }

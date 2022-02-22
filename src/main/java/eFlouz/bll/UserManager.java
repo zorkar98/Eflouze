@@ -7,6 +7,16 @@ public class UserManager {
 	
 // Création d'un compte utilisateur	
 	UserDAOJDBCImpl userOkDao = new UserDAOJDBCImpl();
+	String pseudo;
+	String nom;
+	String prenom;
+	String email;
+	String telephone;
+	String rue;
+	int code_postal;
+	String ville;
+	String mot_de_passe;
+	User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
 	
 //Fonction
 	public boolean seConnecter(String email,String mdp) throws Exception{
@@ -38,7 +48,7 @@ public class UserManager {
 		//Si il ne sont pas pr�sents l'inscription peut continuer
 			if (presenceEnBase == 0) {
 		
-			User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
+			
 			
 			UserDAOJDBCImpl userDAOJDBCImpl = new UserDAOJDBCImpl();
 				userDAOJDBCImpl.insertUser(user);
@@ -53,10 +63,12 @@ public class UserManager {
 		
 	}
 	//Fonction permettant l'appel de la fonction deleteByEmailAndMdp de la dal
-	public static String supprimerCompte (String email, String mdp) throws Exception {
+	public String supprimerCompte (String email, String mdp) throws Exception {
+		System.out.println("manager " + email);
+		System.out.println("manager " + mdp);
 
 	String confirmation;
-	confirmation = UserDAOJDBCImpl.deleteUserByEmailAndMdp(email,mdp);
+	confirmation = userOkDao.deleteUserByEmailAndMdp(email,mdp);
 	return confirmation;
 	}
 }

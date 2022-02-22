@@ -12,6 +12,8 @@ public class User {
 	private int code_postal;
 	private String ville;
 	private String mot_de_passe;
+	private int credit;
+	private boolean administrateur;
 	public String getPseudo() {
 		return pseudo;
 	}
@@ -96,9 +98,6 @@ public class User {
 		return administrateur;
 	}
 
-
-	private int credit;
-	private boolean administrateur;
 	
 	
 	public User(String email, String mot_de_passe) {
