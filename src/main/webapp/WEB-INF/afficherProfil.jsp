@@ -10,11 +10,16 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSafficherProfil/style.css">
 </head>
-<body>
+<body class="body">
 	
-	<div class="header">
-		<h1>eFlouz</h1>
-	</div>
+	<c:choose>
+	<c:when test="${empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+	</c:when>
+	<c:when test="${not empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+	</c:when>
+	</c:choose>
 	<div class="container2">
 		<div class="info_profil">
 	<c:choose>

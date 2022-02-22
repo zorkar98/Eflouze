@@ -10,7 +10,7 @@
 <title>Accueil eFlouz</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSaccueil/style.css">
 </head>
-<body>
+<body class="body">
 	<c:choose>
 	<c:when test="${empty sessionScope}">
 	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>

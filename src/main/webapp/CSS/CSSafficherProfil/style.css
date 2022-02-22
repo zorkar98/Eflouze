@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 .header {
-	width : 1200px;
-	height : 150px;
-	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	
 }
 

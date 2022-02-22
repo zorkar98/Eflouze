@@ -12,7 +12,14 @@ pageEncoding="UTF-8"%>
 <script src="script.js"></script>
 </head>
 <body class="body">
-
+<c:choose>
+	<c:when test="${empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+	</c:when>
+	<c:when test="${not empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+	</c:when>
+	</c:choose>
 
 
 
