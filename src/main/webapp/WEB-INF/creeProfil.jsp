@@ -12,9 +12,22 @@
 	href="${pageContext.request.contextPath}/CSS/CSSconnexion/style.css">
 </head>
 <body class="body">
+	<c:choose>
+		<c:when test="${empty sessionScope}">
+			<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+		</c:when>
+		<c:when test="${not empty sessionScope}">
+			<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+		</c:when>
+	</c:choose>
 	<h1 class="title">Création de compte eFlouz</h1>
-			<p>${sessionScope.user.email }</p>
+	
 	<br>
+	<div class="title">
+	<c:if test="${not empty sessionScope.user.pseudo}">
+		<p>Credit : ${sessionScope.user.credit} points</p>
+	</c:if>
+	</div>
 	<form action="./monProfil" method="post" class="form">
 		<div class="div">
 			<input class="form_item" type="text" name="Pseudo"
@@ -48,11 +61,15 @@
 				type="text" name="Confirmation" placeholder="Confirmation">
 		</div>
 		<div class="div">
+			<br>
 			<c:if test="${not empty sessionScope.user.pseudo}">
-				<p>Credit : ${sessionScope.user.credit}</p>
+
 				<div class="div_submit">
-					<%-- <a href=""><input class="form_item_submit" type="submit" value="Enregistrer" name="Enregistrer"></a> --%> 
-					<a href="${pageContext.request.contextPath }/supprimerCompte"><input class="form_item_submit" type="button" value="Supprimer"
+					<a href="${pageContext.request.contextPath }/modifierProfil"><input
+						class="form_item_submit" type="submit"
+						value="Enregistrer modifications" name="Enregistrer"></a> <a
+						href="${pageContext.request.contextPath }/supprimerCompte"><input
+						class="form_item_submit" type="button" value="Supprimer"
 						name="Supprimer"></a>
 				</div>
 			</c:if>
@@ -66,7 +83,7 @@
 						href="${pageContext.request.contextPath }/home"><input
 						class="form_item_submit" type="button" value="Annuler"
 						name="Annuler"></a>
-						
+
 				</div>
 			</c:when>
 		</c:choose>

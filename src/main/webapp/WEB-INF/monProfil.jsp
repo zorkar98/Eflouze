@@ -7,12 +7,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eFlouze - Page de création de compte</title>
+<title>eFlouze - Profil</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/CSS/CSSconnexion/style.css">
 </head>
 <body class="body">
+<c:choose>
+	<c:when test="${empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+	</c:when>
+	<c:when test="${not empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+	</c:when>
+	</c:choose>
+
 	<h1 class="title">Création de compte eFlouz</h1>
+	<br>
+		<p class="message_creation"> ${requestScope.Succes}${requestScope.Pseudo}${requestScope.Email}${requestScope.Both}</p>
 	<br>
 	<form  action="./monProfil" method="post" class="form">
 		<div class="div">
@@ -41,6 +52,6 @@
 			<a href="${pageContext.request.contextPath }/home" ><input class="form_item_submit" type="button" value="Annuler" name="Annuler"></a>
 		</div>
 	</form>
-	<p class="message_creation"> ${requestScope.Succes}${requestScope.Pseudo}${requestScope.Email}${requestScope.Both}</p>
+	<br>
 </body>
 </html>

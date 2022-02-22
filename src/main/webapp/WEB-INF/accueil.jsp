@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Accueil eFlouz</title>
+<title>Accueil</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSaccueil/style.css">
 </head>
-<body>
+<body class="body">
 	<c:choose>
 	<c:when test="${empty sessionScope}">
 	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>

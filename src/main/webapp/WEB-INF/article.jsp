@@ -7,15 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>eFlouz</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSarticle/style.css">
 </head>
-<body>
-	<div class="container">
-		<div>
-			<h1>eFlouz</h1>
-			<img alt="" src=""><p>PHOTO ARTICLE</p>
-		</div>
+<body class="body">
+	<div class="title">
+	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
 		<div>
 			<h1>Nouvelle vente</h1>
 			<form action="${pageContext.request.contextPath}/vendre" method="post">
