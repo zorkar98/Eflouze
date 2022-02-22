@@ -4,13 +4,7 @@ import java.time.LocalDate;
 
 public class Article {
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
+	
 
 	private int noArticle;
 	private String nomArticle;
@@ -23,16 +17,25 @@ public class Article {
 	private int noCategorie;
 
 	public Article(String nomArticle, String description, LocalDate dateDebutEnchere,
-			LocalDate dateFinEnchere, int prixInitial ,int noUtilisateur) {
+			LocalDate dateFinEnchere, int prixInitial ,int noUtilisateur, int noCategorie) {
 		super();
 		this.nomArticle = nomArticle;
+		this.description = description;
 		this.dateDebutEnchere = dateDebutEnchere;
 		this.dateFinEnchere = dateFinEnchere;
 		this.prixInitial = prixInitial;
 		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
 	}
 
+	public String getDescription() {
+		return description;
+	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public int getNoArticle() {
 		return noArticle;
 	}
