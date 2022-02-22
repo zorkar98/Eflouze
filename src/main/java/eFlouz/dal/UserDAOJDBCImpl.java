@@ -18,8 +18,11 @@ public class UserDAOJDBCImpl {
 			+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE_USER_BY_EMAIL_AND_MDP = "DELETE FROM [UTILISATEURS] WHERE email = ? and mot_de_passe = ?";
 
-	private static final String UPDATE_USER_BY_NO_UTILISATEUR = "UPDATE (pseudo, nom, prenom ,email ,telephone, rue, code_postal, ville, mot_de_passe) FROM [UTILISATEURS] WHERE (no_utilisateur =?)"
-			+ "VALUES (?,?,?,?,?,?,?,?)";
+	private static final String UPDATE_USER_BY_NO_UTILISATEUR = "UPDATE [UTILISATEURS] SET pseudo = ?, nom = ?, prenom = ? ,email = ? ,telephone = ? , rue = ? , code_postal = ? , ville  = ?, mot_de_passe = ? WHERE no_utilisateur = ? ";
+			
+	
+	//UPDATE UTILISATEURS SET pseudo ='Zorkar' , nom ='Quere', prenom = 'Clement' , email = 'clement.quere2021@campus-eni.fr' , telephone = '0652281966', rue = '2 Rue du Vicomte De La Cassecouillerie', code_postal =  44830, ville = 'Bouaye', mot_de_passe = 'azerty' WHERE no_utilisateur = 1;
+	
 //Méthode de création d'un user à stocker dans la session
 	public static User selectUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
 		int noUtilisateur = 0;
@@ -172,16 +175,27 @@ public class UserDAOJDBCImpl {
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(UPDATE_USER_BY_NO_UTILISATEUR);
 		
-		rqt.setInt(1, userAModifier.getNo_utilisateur());
-		rqt.setString(2, userAModifier.getPseudo());
-		rqt.setString(3, userAModifier.getNom());
-		rqt.setString(4, userAModifier.getPrenom());
-		rqt.setString(5, userAModifier.getEmail());
-		rqt.setString(6, userAModifier.getTelephone());
-		rqt.setString(7, userAModifier.getRue());
-		rqt.setInt(8, userAModifier.getCode_postal());
-		rqt.setString(9, userAModifier.getVille());
-		rqt.setString(10, userAModifier.getMot_de_passe());
+		System.out.println(userAModifier.getNo_utilisateur());
+		System.out.println(userAModifier.getPseudo());
+		System.out.println(userAModifier.getNom());
+		System.out.println(userAModifier.getPrenom());
+		System.out.println(userAModifier.getEmail());
+		System.out.println(userAModifier.getTelephone());
+		
+		
+		
+		rqt.setString(1, userAModifier.getPseudo());
+		rqt.setString(2, userAModifier.getNom());
+		rqt.setString(3, userAModifier.getPrenom());
+		rqt.setString(4, userAModifier.getEmail());
+		rqt.setString(5, userAModifier.getTelephone());
+		rqt.setString(6, userAModifier.getRue());
+		rqt.setInt(7, userAModifier.getCode_postal());
+		rqt.setString(8, userAModifier.getVille());
+		rqt.setString(9, userAModifier.getMot_de_passe());
+		rqt.setInt(10, userAModifier.getNo_utilisateur());
+		
+		int rs = rqt.executeUpdate();
 		
 		cnx.close();
 	}

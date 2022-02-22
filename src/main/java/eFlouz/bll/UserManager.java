@@ -77,7 +77,8 @@ public class UserManager {
 	
 	//Fonction de comparaison entre le l'actuel profil de l'utilisateur et de sont profil avec modification afin d'un UPDATE en bdd
 	public static void miseAJourProfil (User userSession, User userAvecModif) throws Exception {
-
+		
+	
 		if (userSession != userAvecModif) {
 			userAvecModif.setNo_utilisateur(userSession.getNo_utilisateur());
 			UserDAOJDBCImpl.updateUserByNoUtilisateur(userAvecModif);

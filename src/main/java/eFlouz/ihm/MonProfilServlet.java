@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import eFlouz.bll.UserManager;
+import eFlouz.bo.User;
 
 /**
  * Servlet implementation class MonProfil
@@ -44,6 +46,12 @@ public class MonProfilServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession(false);
+		
+		User userSession = (User) session.getAttribute("user"); 
+		
+		if (userSession == null) {
+		
 		// Création de mon profil
 		String pseudo = request.getParameter("Pseudo");
 		String nom = request.getParameter("Nom");
@@ -76,6 +84,15 @@ public class MonProfilServlet extends HttpServlet {
 			request.setAttribute("Both", both);
 			System.out.println(presenceBase);
 		doGet(request, response);
+		
+		}else {	
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/modifierProfil");
+			if (rd != null) {
+				rd.forward(request, response);
+			}
+			
+		}
 	}	
 		
 }

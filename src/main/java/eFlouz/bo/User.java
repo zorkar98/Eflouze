@@ -151,6 +151,12 @@ public class User {
 
 
 
+	public User(String pseudo2, String nom2, String prenom2, String email2, String telephone2, String rue2,
+			String codePostal, String ville2, String motDePasse) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getEmail() {
 		return email;
 	}
