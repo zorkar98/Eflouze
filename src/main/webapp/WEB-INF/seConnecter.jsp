@@ -7,12 +7,19 @@ pageEncoding="UTF-8"%>
 <html class="html">
 <head>
 <meta charset="utf-8">
-<title>eFlouze - Page de connexion au compte</title>
+<title>eFlouze - Connexion</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CSSconnexion/style.css">
 <script src="script.js"></script>
 </head>
 <body class="body">
-
+<c:choose>
+	<c:when test="${empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+	</c:when>
+	<c:when test="${not empty sessionScope}">
+	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+	</c:when>
+	</c:choose>
 
 
 
