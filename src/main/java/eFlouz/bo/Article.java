@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 public class Article {
 
-	
-
 	private int noArticle;
 	private String nomArticle;
 	private String description;
@@ -15,7 +13,8 @@ public class Article {
 	private int prixVente;
 	private int noUtilisateur;
 	private int noCategorie;
-
+	
+	
 	public Article(String nomArticle, String description, LocalDate dateDebutEnchere,
 			LocalDate dateFinEnchere, int prixInitial ,int noUtilisateur, int noCategorie) {
 		super();
@@ -28,6 +27,16 @@ public class Article {
 		this.noCategorie = noCategorie;
 	}
 
+	public Article(int noArticle, String nomArticle, String description, int prixInitial ,int noUtilisateur, int noCategorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.prixInitial = prixInitial;
+		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
+	}
+	
 	public String getDescription() {
 		return description;
 	}

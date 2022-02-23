@@ -1,5 +1,6 @@
 package eFlouz.bll;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import eFlouz.bo.Article;
@@ -19,5 +20,6 @@ public class ArticleManager {
 		articleDao.insertArticle(articleAAjouter);
 
 	}
-
+	
+	
 }
