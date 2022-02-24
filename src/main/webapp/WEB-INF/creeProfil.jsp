@@ -51,14 +51,14 @@
 		</div>
 		<div class="div">
 			<c:if test="${not empty sessionScope.user.pseudo}">
-				<input class="form_item" type="text" name="AncienMotDePasse"
+				<input class="form_item" type="password" name="AncienMotDePasse"
 					placeholder="Ancien Mot de passe">
 			</c:if>
 		</div>
 		<div class="div">
-			<input class="form_item" type="text" name="MotDePasse"
+			<input class="form_item" type="password"" name="MotDePasse"
 				placeholder="Mot de passe"> <input class="form_item"
-				type="text" name="Confirmation" placeholder="Confirmation">
+				type="password" name="Confirmation" placeholder="Confirmation">
 		</div>
 		<div class="div">
 			<br>

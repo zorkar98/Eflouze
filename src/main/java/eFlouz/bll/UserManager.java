@@ -31,7 +31,7 @@ public class UserManager {
 	}
 	System.out.println("UserManager" + userOk);
 	System.out.println(user.getEmail());
-	System.out.println(user.getMot_de_passe());
+	System.out.println(user.getMotDePasse());
 	return (boolean) userOk;
 	}	
 	

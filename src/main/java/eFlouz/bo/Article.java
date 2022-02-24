@@ -28,6 +28,10 @@ public class Article {
 		this.noCategorie = noCategorie;
 	}
 
+	public Article() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getDescription() {
 		return description;
 	}

@@ -19,5 +19,20 @@ public class ArticleManager {
 		articleDao.insertArticle(articleAAjouter);
 
 	}
+	
+	//Fonction de réccupération des détails d'un article
+	public static Article afficherDetailsArticle (int noArticle) throws Exception {
+		
+		Article articleVendu = new Article ();
+		
+		try {
+			articleVendu = ArticleDAOJBDCImpl.selectArticle (noArticle);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return articleVendu ;
+	}
+	
 
 }

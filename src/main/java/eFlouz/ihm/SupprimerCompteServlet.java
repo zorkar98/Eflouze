@@ -50,7 +50,7 @@ public class SupprimerCompteServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		user = (User) session.getAttribute("user");
 		email = user.getEmail();
-		mdp = user.getMot_de_passe();
+		mdp = user.getMotDePasse();
 		System.out.println("ihm" + email + mdp);
 		String confirmation = null;
 		try {

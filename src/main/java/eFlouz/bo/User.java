@@ -157,6 +157,11 @@ public class User {
 	}
 
 
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getEmail() {
 		return email;
 	}
@@ -167,7 +172,7 @@ public class User {
 	}
 
 
-	public String getMot_de_passe() {
+	public String getMotDePasse() {
 		return mot_de_passe;
 	}
 
