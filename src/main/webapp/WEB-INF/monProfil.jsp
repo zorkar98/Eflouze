@@ -25,7 +25,7 @@
 	<br>
 		<p class="message_creation"> ${requestScope.Succes}${requestScope.Pseudo}${requestScope.Email}${requestScope.Both}</p>
 	<br>
-	<form  action="./monProfil" method="post" class="form">
+	<form action="./monProfil" method="post" class="form">
 		<div class="div">
 			<input class="form_item" type="text" name="Pseudo" placeholder="Pseudo" required="required"> 
 			<input class="form_item" type="text" name="Nom" placeholder="Nom" required="required">

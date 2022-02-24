@@ -1,6 +1,8 @@
 package eFlouz.ihm;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,14 +50,19 @@ public class ModifierProfilServlet extends HttpServlet {
 		User userAvecModif = new User(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 
 		User userSession = (User) session.getAttribute("user");
-
+		
+		
 		try {
 			UserManager.miseAJourProfil(userSession, userAvecModif);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+		if (rd != null) {
+			rd.forward(request, response);
+		}
 	}
 
 	/**

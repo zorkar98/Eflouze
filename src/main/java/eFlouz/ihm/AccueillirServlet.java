@@ -2,6 +2,7 @@ package eFlouz.ihm;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.Session;
+import eFlouz.bo.Article;
+import eFlouz.dal.ArticleDAOJBDCImpl;
 
 import eFlouz.bll.ArticleManager;
 import eFlouz.bo.Article;
@@ -37,6 +39,24 @@ public class AccueillirServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArticleDAOJBDCImpl articleDao = new ArticleDAOJBDCImpl();
+		List<Article> listeArticles = new ArrayList<Article>();
+		
+		try {
+			
+			listeArticles = articleDao.selectArticleVendus();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("listeArticles", listeArticles);
+		for (Article article : listeArticles) {
+			System.out.println(article.getNomArticle());
+		}
+		
+		System.out.println(listeArticles);
 		
 		request.getParameter("titre");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
