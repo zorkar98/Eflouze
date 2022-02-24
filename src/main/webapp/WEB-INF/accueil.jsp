@@ -60,11 +60,12 @@
 			<img alt="" src=""> 
 			<c:forEach items="${liste}" var="article">
 			 <div class="list_enchere">
-				<c:out value="Nom de l'article : ${article.nomArticle}"/><br>
+				<c:out value="Nom de l'article : "/>
+				<a href="detail" >${article.nomArticle}</a><br>
 				<c:out value="Prix : ${article.prixInitial}"/><br>
 				<c:out value="Fin de l'enchère :${article.dateFinEnchere}"/><br>
-				<c:out value="Vendeur : ${article.pseudo}" /><br>
-				<a href="${pageContext.request.contextPath}/profil?titre = name" >${requestScope.noUtilisateur}</a>
+				<c:out value="Vendeur :" />
+				<a href="${pageContext.request.contextPath}/profil?titre=${article.pseudo}" >${article.pseudo}</a><br>
 			</div>
 			</c:forEach>
 		
