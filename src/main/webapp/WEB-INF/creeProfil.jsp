@@ -14,10 +14,10 @@
 <body class="body">
 	<c:choose>
 		<c:when test="${empty sessionScope}">
-			<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+			<jsp:include page="/WEB-INF/fragment/header.jsp"></jsp:include>
 		</c:when>
 		<c:when test="${not empty sessionScope}">
-			<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+			<jsp:include page="/WEB-INF/fragment/headerConnecte.jsp"></jsp:include>
 		</c:when>
 	</c:choose>
 	<h1 class="title">Création de compte eFlouz</h1>
@@ -80,8 +80,8 @@
 			<c:when test="${empty sessionScope.user.pseudo}">
 				<div class="div_submit">
 					<input class="form_item_submit" type="submit" value="Créer"
-						name="Creer"> <a
-						href="${pageContext.request.contextPath }/home"><input
+						name="Creer"> 
+						<a href="${pageContext.request.contextPath }/home"><input
 						class="form_item_submit" type="button" value="Annuler"
 						name="Annuler"></a>
 

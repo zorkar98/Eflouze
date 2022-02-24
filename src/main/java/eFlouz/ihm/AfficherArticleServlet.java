@@ -43,7 +43,10 @@ public class AfficherArticleServlet extends HttpServlet {
 
 		List<Article> listeArticleEnVente = new ArrayList<Article>();
 		ArticleDAOJBDCImpl articleDao = new ArticleDAOJBDCImpl();
-
+		User userVendeur = new User ();
+		UserManager userMng = new UserManager();
+		
+		
 		LocalDate date = LocalDate.now();
 		// Appel de la methode de ArticleManager pour récupérer les articles en ventes
 		// ce jour
@@ -84,9 +87,8 @@ public class AfficherArticleServlet extends HttpServlet {
 		request.setAttribute("montantMeilleureEnchere", montantMeilleureEnchere);
 
 
-		User userVendeur = new User ();
 		
-		userVendeur = UserManager.selectInfoVendeur(articleVendu.getPseudo());
+		userVendeur = userMng.selectInfoVendeur(articleVendu.getPseudo());
 		
 		System.out.println("User Vendeur" +userVendeur);
 		
@@ -104,9 +106,15 @@ public class AfficherArticleServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
+		session.setAttribute("nomArticle", nomArticle);
+		session.setAttribute("description", description);
+		session.setAttribute("montantMeilleureEnchere", montantMeilleureEnchere);
 		session.setAttribute("prixInitial", prixInitial);
+		session.setAttribute("vendeur", pseudoVendeur);
 		session.setAttribute("noArticle", noArticle);
-
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/afficherDetailArticle.jsp");
 		if (rd != null) {
 			rd.forward(request, response);
@@ -134,7 +142,7 @@ public class AfficherArticleServlet extends HttpServlet {
 
 		int proposition = 0;
 		proposition = Integer.parseInt(request.getParameter("proposition"));
-
+		session.setAttribute("proposition", proposition);
 		
 		if (proposition > prixInitial) {
 		EnchereManager enchereAjouter = new EnchereManager();
@@ -143,7 +151,7 @@ public class AfficherArticleServlet extends HttpServlet {
 		
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("home");
+		RequestDispatcher rd = request.getRequestDispatcher("remporterVente");
 		if(rd != null) {
 			rd.forward(request, response);
 		}

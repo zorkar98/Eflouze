@@ -9,20 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import eFlouz.bo.User;
-import eFlouz.dal.UserDAOJDBCImpl;
-
 /**
- * Servlet implementation class AfficherProfil
+ * Servlet implementation class RemporterVenteServlet
  */
-@WebServlet("/profil")
-public class AfficherProfil extends HttpServlet {
+@WebServlet("/remporterVente")
+public class RemporterVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AfficherProfil() {
+    public RemporterVenteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,29 +28,20 @@ public class AfficherProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String vendeurPseudo = request.getParameter("vendeur");
-		System.out.println("vendeurPseudo" + vendeurPseudo);
-		UserDAOJDBCImpl userDao = new UserDAOJDBCImpl();
-		User vendeurArticle;
-		try {
-			vendeurArticle = userDao.selectInfoVendeur(vendeurPseudo);
-		System.out.println("vendeur = "+ vendeurArticle );
-		request.setAttribute("vendeur", vendeurArticle);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/afficherProfil.jsp");
-		if(rd!=null) {
+		
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/remporterVente.jsp");
+		if(rd != null) {
 			rd.forward(request, response);
 		}
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

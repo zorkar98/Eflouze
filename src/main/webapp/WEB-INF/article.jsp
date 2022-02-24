@@ -12,7 +12,7 @@
 </head>
 <body class="body">
 	<div class="title">
-	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+	<jsp:include page="/WEB-INF/fragment/headerConnecte.jsp"></jsp:include>
 		<div>
 			<h1>Nouvelle vente</h1>
 			<form action="${pageContext.request.contextPath}/vendre" method="post">

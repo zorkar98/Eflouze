@@ -74,10 +74,10 @@ public class MonProfilServlet extends HttpServlet {
 		String emailProfil = null;
 		String both = null;
 		switch (presenceBase) {
-		case 0 :  succes = "Votre compte à été ajouter avec succès";System.out.println(succes); break;
-		case 1 :  pseudoProfil = "Le pseudo est déjà utilisé, Votre compte n'à pas été ajouter désolé"; break;
-		case 2 :  emailProfil = "L'email est déjà utilisé, Votre compte n'à pas été ajouter désolé"; break;
-		case 3 :  both = "Le pseudo et l'email sont déjà utilisés, vérifier si vous n'avez pas déjà un compte";
+		case 0 :  succes = "Votre compte a été ajouté avec succès";System.out.println(succes); break;
+		case 1 :  pseudoProfil = "Le pseudo est déjà utilisé, Votre compte n'a pas été ajouté désolé"; break;
+		case 2 :  emailProfil = "L'email est déjà utilisé, Votre compte n'a pas été ajouté désolé"; break;
+		case 3 :  both = "Le pseudo et l'email sont déjà utilisés, vérifiez si vous n'avez pas déjà un compte";
 		}
 			request.setAttribute("Succes", succes);
 			request.setAttribute("Pseudo", pseudoProfil);

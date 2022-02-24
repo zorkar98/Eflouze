@@ -85,12 +85,12 @@ public class UserManager {
 		}
 	}
 	
-	public static User selectInfoVendeur (String vendeur)
+	public User selectInfoVendeur (String vendeur)
 	{
 		
 		User utilisateur = null;
 		try {
-			utilisateur = UserDAOJDBCImpl.selectInfoVendeur(vendeur);
+			utilisateur = userOkDao.selectInfoVendeur(vendeur);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

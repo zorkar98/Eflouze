@@ -13,10 +13,10 @@
 <body>
 <c:choose>
 	<c:when test="${empty sessionScope}">
-	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
+	<jsp:include page="/WEB-INF/fragment/header.jsp"></jsp:include>
 	</c:when>
 	<c:when test="${not empty sessionScope}">
-	<jsp:include page="/WEB-INF/fragment/headerConnecte.jspf"></jsp:include>
+	<jsp:include page="/WEB-INF/fragment/headerConnecte.jsp"></jsp:include>
 	</c:when>
 	</c:choose>
 
