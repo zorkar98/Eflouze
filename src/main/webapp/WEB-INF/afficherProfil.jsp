@@ -23,7 +23,7 @@
 	<div class="container2">
 		<div class="info_profil">
 	<c:choose>
-		<c:when test="${name == pseudo}">
+		<c:when test="${article.pseudo == user.pseudo || empty article.pseudo}">
 		
 			<p>Pseudo : ${sessionScope.user.pseudo}</p>
 			<p>Nom : ${sessionScope.user.nom}</p>
@@ -37,8 +37,8 @@
 			<a href="${pageContext.request.contextPath }/monProfil" ><input class="form_item_submit" type="button" value="Modifier" name="Annuler"></a>
 	 </c:when>
 
-	<c:when test="${name != pseudo}">
-		<p>Pseudo : ${requestScope.pseudo}</p>
+	<c:when test="${article.pseudo != user.pseudo}">
+		<p>Pseudo : ${article.pseudo}</p>
 			<p>Nom : ${requestScope.nom}</p>
 			<p>Prénom : ${requestScope.prenom}</p>
 			<p>Email : ${requestScope.email}</p>

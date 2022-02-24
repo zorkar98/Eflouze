@@ -195,7 +195,7 @@ public class UserDAOJDBCImpl {
 		rqt.setString(9, userAModifier.getMotDePasse());
 		rqt.setInt(10, userAModifier.getNoUtilisateur());
 		
-		int rs = rqt.executeUpdate();
+		rqt.executeUpdate();
 		
 		cnx.close();
 	}
