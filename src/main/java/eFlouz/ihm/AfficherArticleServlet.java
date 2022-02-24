@@ -88,11 +88,10 @@ public class AfficherArticleServlet extends HttpServlet {
 		request.setAttribute("pseudoVendeur", pseudoVendeur);
 
 		HttpSession session = request.getSession();
-		
+
 		session.setAttribute("prixInitial", prixInitial);
 		session.setAttribute("noArticle", noArticle);
 
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/afficherDetailArticle.jsp");
 		if (rd != null) {
 			rd.forward(request, response);
@@ -111,7 +110,6 @@ public class AfficherArticleServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		User userSession = (User) session.getAttribute("user");
-		System.out.println(userSession.getNoUtilisateur());
 		
 		
 		LocalDate dateEnchere = LocalDate.now();
@@ -126,11 +124,14 @@ public class AfficherArticleServlet extends HttpServlet {
 		if (proposition > prixInitial) {
 		EnchereManager enchereAjouter = new EnchereManager();
 		enchereAjouter.ajouterEnchere(dateEnchere, proposition, noArticle, noUtilisateur);
-
-
-
 		}
 		
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("home");
+		if(rd != null) {
+			rd.forward(request, response);
+		}
 	}
 
 }
