@@ -11,7 +11,9 @@ public class EnchereDAOJDBCImpl {
 	
 	//Ordre sql insert ENCHERE
 	private static final String INSERT_ENCHERE = "INSERT INTO ENCHERES VALUES (?,?,?,?)";
-
+	private static final String SELECT_BY_NO_ARTICLE = "SELECT * FROM ENCHERE WHERE no_article = ?";
+	
+	
 	//Fonction inserer enchere return Enchere a ajouter
 	public void insererEnchere(Enchere enchereAjoute) throws SQLException {
 		
@@ -36,5 +38,21 @@ public class EnchereDAOJDBCImpl {
 			}
 		}
 		cnx.close();
+	}
+	
+	public Enchere selectByNoArticle () throws Exception {
+		
+		Connection cnx = ConnectionProvider.getConnection();
+		PreparedStatement rqt = cnx.prepareStatement(SELECT_BY_NO_ARTICLE);
+		
+		ResultSet rs = rqt.executeQuery();
+
+		
+		Enchere meilleureEnchere = new Enchere();
+		
+		meilleureEnchere.setMontantEnchere(rs.getInt(0));
+		meilleureEnchere.setNoArticle(0);
+		
+		return meilleureEnchere;
 	}
 }

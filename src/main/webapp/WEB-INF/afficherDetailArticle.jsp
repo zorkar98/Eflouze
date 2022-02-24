@@ -16,9 +16,10 @@
 	<div>
 		<p>Nom article : ${nomArticle}</p>
 		<p>Description : ${description}</p>
-		<p>Catégorie <c:if test= "${categorie == 1}"><p>Maison</p></c:if>
-					 <c:if test= "${categorie == 2}"><p>High-tech</p></c:if>
-					 <c:if test= "${categorie == 3}"><p>Voiture</p></c:if></p>
+		<p>Catégorie :
+					 <c:if test= "${categorie == 1}">Maison</c:if>
+					 <c:if test= "${categorie == 2}">High-tech</c:if>
+					 <c:if test= "${categorie == 3}">Voiture</c:if></p>
 		<p>Meilleur offre : ${montantMeilleureEnchere}</p>
 		<p>Mise à prix : ${prixInitial}</p>
 		<p>Fin de l'enchère : ${dateFinEnchere}</p>
@@ -31,7 +32,8 @@
 		<p>Vendeur : ${pseudoVendeur} </p>
 			
 		<p>Ma proposition :</p>
-		<form action="/" method=>
+	
+			<form action="${pageContext.request.contextPath}/AfficherArticleServlet" method="post">
 			<input class="" type="number" name="proposition" placeholder="Proposition">
 			<input class="" type="submit" value="encherir" name="Enchérir">
 		</form>

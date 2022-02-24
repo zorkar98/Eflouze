@@ -28,9 +28,15 @@ public Enchere(LocalDate dateEnchere, int montantEnchere, int noArticle, int noU
 		this.noUtilisateur = noUtilisateur;
 	}
 
+	public Enchere(Article article) {
+	
+	}
+
+
+
 	public Enchere() {
-	// TODO Auto-generated constructor stub
-}
+		
+	}
 
 	public int getNoEnchere() {
 		return noEnchere;

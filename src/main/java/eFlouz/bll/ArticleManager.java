@@ -25,7 +25,7 @@ public class ArticleManager {
 	}
 
 	//Fonction de réccupération des détails d'un article
-	public static Article afficherDetailsArticle (int noArticle) throws Exception {
+	public Article afficherDetailsArticle (int noArticle) throws Exception {
 		
 		Article articleVendu = new Article ();
 		

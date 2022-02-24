@@ -14,7 +14,9 @@ public class Article {
 	private int noUtilisateur;
 	private int noCategorie;
 	private String pseudo;
-
+	Enchere enchere = new Enchere(null);
+	
+	
 	public String getPseudo() {
 		return pseudo;
 	}
