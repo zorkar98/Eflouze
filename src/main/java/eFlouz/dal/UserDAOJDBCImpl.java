@@ -5,8 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javax.servlet.http.HttpSession;
-
 import eFlouz.bo.User;
 
 public class UserDAOJDBCImpl {
@@ -19,7 +17,8 @@ public class UserDAOJDBCImpl {
 	private static final String DELETE_USER_BY_EMAIL_AND_MDP = "DELETE FROM [UTILISATEURS] WHERE email = ? and mot_de_passe = ?";
 
 	private static final String UPDATE_USER_BY_NO_UTILISATEUR = "UPDATE [UTILISATEURS] SET pseudo = ?, nom = ?, prenom = ? ,email = ? ,telephone = ? , rue = ? , code_postal = ? , ville  = ?, mot_de_passe = ? WHERE no_utilisateur = ? ";
-			
+	
+	private static final String SELECT_VENDEUR = "SELECT pseudo, email FROM UTILISATEURS WHERE pseudo=? ";
 	
 	//UPDATE UTILISATEURS SET pseudo ='Zorkar' , nom ='Quere', prenom = 'Clement' , email = 'clement.quere2021@campus-eni.fr' , telephone = '0652281966', rue = '2 Rue du Vicomte De La Cassecouillerie', code_postal =  44830, ville = 'Bouaye', mot_de_passe = 'azerty' WHERE no_utilisateur = 1;
 	
@@ -199,4 +198,40 @@ public class UserDAOJDBCImpl {
 		
 		cnx.close();
 	}
+	//Méthode de création d'un user à stocker dans la session
+		public static User selectInfoVendeur(String vendeur) throws Exception {
+			int noUtilisateur = 0;
+			String pseudo = null;
+			String nom = null;
+			String prenom = null;
+			String email = null;
+			String telephone = null;
+			String rue = null;
+			int codePostal =  0;
+			String ville = null;
+			String motDePasse = null;
+			int credit = 0;
+			User utilisateur = new User(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
+	//Connection + Requete SELECT WHERE pseudo = ? 
+			Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement rqt = cnx.prepareStatement(SELECT_VENDEUR);
+			rqt.setString(1, utilisateur.getPseudo());
+			ResultSet rs = rqt.executeQuery();
+			rs.next();
+	//Attribution des donnée récupérées avec le SELECT à notre user
+			utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
+			utilisateur.setPseudo(rs.getString("pseudo"));
+			utilisateur.setNom(rs.getString("nom"));
+			utilisateur.setPrenom(rs.getString("prenom"));
+			utilisateur.setEmail(rs.getString("email"));
+			utilisateur.setTelephone(rs.getString("telephone"));
+			utilisateur.setRue(rs.getString("rue"));
+			utilisateur.setCodePostal(rs.getInt("code_postal"));
+			utilisateur.setVille(rs.getString("ville"));
+			utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+			utilisateur.setCredit(rs.getInt("credit"));
+			cnx.close();
+
+			return utilisateur;
+		}
 }

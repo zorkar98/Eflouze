@@ -23,7 +23,7 @@
 	<div class="container2">
 		<div class="info_profil">
 	<c:choose>
-		<c:when test="${article.pseudo == user.pseudo || empty article.pseudo}">
+		<c:when test="${not empty sessionScope}">
 		
 			<p>Pseudo : ${sessionScope.user.pseudo}</p>
 			<p>Nom : ${sessionScope.user.nom}</p>
@@ -37,17 +37,17 @@
 			<a href="${pageContext.request.contextPath }/monProfil" ><input class="form_item_submit" type="button" value="Modifier" name="Annuler"></a>
 	 </c:when>
 
-	<c:when test="${article.pseudo != user.pseudo}">
-		<p>Pseudo : ${article.pseudo}</p>
-			<p>Nom : ${requestScope.nom}</p>
-			<p>Prénom : ${requestScope.prenom}</p>
-			<p>Email : ${requestScope.email}</p>
-			<p>Téléphone : ${requestScope.no_telephone}</p>
-			<p>Rue : ${requestScope.rue}</p>
-			<p>Code postal : ${requestScope.code_postal}</p>
-			<p>Ville : ${requestScope.ville}</p>
-		</c:when>
-	</c:choose>
+	<c:when test="${empty requestScope.vendeur}">
+		<p>Pseudo : ${requestScope.vendeur.pseudo}</p>
+			<p>Nom : ${requestScope.vendeur.nom}</p>
+			<p>Prénom : ${requestScope.vendeur.prenom}</p>
+			<p>Email : ${requestScope.vendeur.email}</p>
+			<p>Téléphone : ${requestScope.vendeur.no_telephone}</p>
+			<p>Rue : ${requestScope.vendeur.rue}</p>
+			<p>Code postal : ${requestScope.vendeur.code_postal}</p>
+			<p>Ville : ${requestScope.vendeur.ville}</p>
+		</c:when> 
+	</c:choose> 
 		</div>
 	</div>
 </body>

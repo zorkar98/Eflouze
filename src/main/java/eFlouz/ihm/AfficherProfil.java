@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import eFlouz.bo.User;
+import eFlouz.dal.UserDAOJDBCImpl;
+
 /**
  * Servlet implementation class AfficherProfil
  */
@@ -28,6 +31,16 @@ public class AfficherProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String vendeurPseudo = request.getParameter("vendeur");
+		User vendeurArticle;
+		try {
+			vendeurArticle = UserDAOJDBCImpl.selectInfoVendeur(vendeurPseudo);
+		System.out.println("vendeur = "+ vendeurArticle );
+		request.setAttribute("vendeur", vendeurArticle);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/afficherProfil.jsp");
 		if(rd!=null) {
 			rd.forward(request, response);

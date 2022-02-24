@@ -83,7 +83,21 @@ public class UserManager {
 			userAvecModif.setNoUtilisateur(userSession.getNoUtilisateur());
 			UserDAOJDBCImpl.updateUserByNoUtilisateur(userAvecModif);
 		}
+	}
+	
+	public User selectInfoVendeur (String vendeur)
+	{
 		
+		User utilisateur = null;
+		try {
+			utilisateur = UserDAOJDBCImpl.selectInfoVendeur(vendeur);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 		
+	
+		return utilisateur;
 	}
 }

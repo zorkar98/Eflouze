@@ -19,6 +19,7 @@ import eFlouz.bo.User;
 @WebServlet("/monProfil")
 public class MonProfilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	UserManager user = new UserManager();
        
     /**
      * @see HttpServlet#HttpServlet()
