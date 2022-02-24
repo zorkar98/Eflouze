@@ -66,7 +66,7 @@
 
 				<div class="div_submit">
 
-					<a href="${pageContext.request.contextPath }/modifierProfil"><input class="form_item_submit" type="submit" value="Enregistrer modifications" name="Enregistrer"></a> 
+					<a href="${pageContext.request.contextPath }/modifierProfil"><input class="form_item_submit" type="submit" value="Enregistrer" name="Enregistrer"></a> 
 					<a href="${pageContext.request.contextPath }/supprimerCompte"><input class="form_item_submit" type="button" value="Supprimer" name="Supprimer"></a>
 				</div>
 			</c:if>

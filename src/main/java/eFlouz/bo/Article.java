@@ -15,6 +15,15 @@ public class Article {
 	private int prixVente;
 	private int noUtilisateur;
 	private int noCategorie;
+	private String pseudo;
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
 
 	public Article(String nomArticle, String description, LocalDate dateDebutEnchere,
 			LocalDate dateFinEnchere, int prixInitial ,int noUtilisateur, int noCategorie) {
@@ -26,6 +35,11 @@ public class Article {
 		this.prixInitial = prixInitial;
 		this.noUtilisateur = noUtilisateur;
 		this.noCategorie = noCategorie;
+	}
+
+	public Article(int noArticle2, String nomArticle2, String description2, LocalDate dateDebutEnchere2,
+			LocalDate dateFinEncheres, int prixInitial2, int prixVente2, int noUtilisateur2, int noCategorie2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getDescription() {

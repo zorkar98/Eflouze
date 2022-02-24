@@ -1,6 +1,9 @@
 package eFlouz.ihm;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.Session;
+
+import eFlouz.bll.ArticleManager;
+import eFlouz.bo.Article;
+import eFlouz.dal.ArticleDAOJBDCImpl;
 
 /**
  * Servlet implementation class AccueillirServlet
@@ -42,7 +49,21 @@ public class AccueillirServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		List<Article> listeArticleEnVente = new ArrayList<Article>();
+		ArticleDAOJBDCImpl articleDao = new ArticleDAOJBDCImpl();
+		
+		LocalDate date = LocalDate.now();
+		// Appel de la methode de ArticleManager pour récupérer les articles en ventes ce jour
+		try {
+			listeArticleEnVente = articleDao.selectionnerArticleEnVente(date);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Placer les article en vente dans un context d'application
+		request.setAttribute("liste",listeArticleEnVente);
+		System.out.println(listeArticleEnVente.toString());
+		
 		doGet(request, response);
 	}
 }

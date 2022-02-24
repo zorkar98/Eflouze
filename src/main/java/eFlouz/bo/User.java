@@ -2,16 +2,16 @@ package eFlouz.bo;
 
 public class User {
 
-	private int no_utilisateur;
+	private int noUtilisateur;
 	private String pseudo;
 	private String nom;
 	private String prenom;
 	private String email;
 	private String telephone;
 	private String rue;
-	private int code_postal;
+	private int codePostal;
 	private String ville;
-	private String mot_de_passe;
+	private String motDePasse;
 	private int credit;
 	private boolean administrateur;
 	public String getPseudo() {
@@ -64,13 +64,13 @@ public class User {
 	}
 
 
-	public int getCode_postal() {
-		return code_postal;
+	public int getCodePostal() {
+		return codePostal;
 	}
 
 
-	public void setCode_postal(int code_postal) {
-		this.code_postal = code_postal;
+	public void setCodePostal(int codePostal) {
+		this.codePostal = codePostal;
 	}
 
 
@@ -84,8 +84,8 @@ public class User {
 	}
 
 
-	public int getNo_utilisateur() {
-		return no_utilisateur;
+	public int getNoUtilisateur() {
+		return noUtilisateur;
 	}
 
 
@@ -100,21 +100,21 @@ public class User {
 
 	
 	
-	public User(String email, String mot_de_passe) {
+	public User(String email, String motDePasse) {
 		super();
 		this.email = email;
-		this.mot_de_passe = mot_de_passe;
+		this.motDePasse = motDePasse;
 	}
 	
 
 
-	public void setNo_utilisateur(int no_utilisateur) {
-		this.no_utilisateur = no_utilisateur;
+	public void setNoUtilisateur(int noUtilisateur) {
+		this.noUtilisateur = noUtilisateur;
 	}
 
 
-	public User(String pseudo, String nom, String prenom, String email, String telephone, String rue, int code_postal,
-			String ville, String mot_de_passe) {
+	public User(String pseudo, String nom, String prenom, String email, String telephone, String rue, int codePostal,
+			String ville, String motDePasse) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -122,25 +122,25 @@ public class User {
 		this.email = email;
 		this.telephone = telephone;
 		this.rue = rue;
-		this.code_postal = code_postal;
+		this.codePostal = codePostal;
 		this.ville = ville;
-		this.mot_de_passe = mot_de_passe;
+		this.motDePasse = motDePasse;
 	}
 
 
-	public User(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			int code_postal, String ville, String mot_de_passe, int credit) {
+	public User(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			int codePostal, String ville, String motDePasse, int credit) {
 		super();
-		this.no_utilisateur = no_utilisateur;
+		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
 		this.rue = rue;
-		this.code_postal = code_postal;
+		this.codePostal = codePostal;
 		this.ville = ville;
-		this.mot_de_passe = mot_de_passe;
+		this.motDePasse = motDePasse;
 		this.credit = credit;
 	}
 
@@ -167,19 +167,23 @@ public class User {
 	}
 
 
-	public String getMot_de_passe() {
-		return mot_de_passe;
+	public String getMotDePasse() {
+		return motDePasse;
 	}
 
 
-	public void setMot_de_passe(String mot_de_passe) {
-		this.mot_de_passe = mot_de_passe;
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
 	}
 
 
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
+
+
+	
+	
 	
 	
 	

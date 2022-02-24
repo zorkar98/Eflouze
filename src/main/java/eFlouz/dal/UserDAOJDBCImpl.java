@@ -24,35 +24,35 @@ public class UserDAOJDBCImpl {
 	//UPDATE UTILISATEURS SET pseudo ='Zorkar' , nom ='Quere', prenom = 'Clement' , email = 'clement.quere2021@campus-eni.fr' , telephone = '0652281966', rue = '2 Rue du Vicomte De La Cassecouillerie', code_postal =  44830, ville = 'Bouaye', mot_de_passe = 'azerty' WHERE no_utilisateur = 1;
 	
 //Méthode de création d'un user à stocker dans la session
-	public static User selectUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
+	public static User selectUserByEmailAndMdp(String email, String motDePasse) throws Exception {
 		int noUtilisateur = 0;
 		String pseudo = null;
 		String nom = null;
 		String prenom = null;
 		String telephone = null;
 		String rue = null;
-		int code_postal =  0;
+		int codePostal =  0;
 		String ville = null;
 		int credit = 0;
-		User userSession = new User(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit);
+		User userSession = new User(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
 //Connection + Requete SELECT WHERE email = ? and mot_de_passe = ?
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(SELECT_USER);
 		rqt.setString(1, userSession.getEmail());
-		rqt.setString(2, userSession.getMot_de_passe());
+		rqt.setString(2, userSession.getMotDePasse());
 		ResultSet rs = rqt.executeQuery();
 		rs.next();
 //Attribution des donnée récupérées avec le SELECT à notre user
-		userSession.setNo_utilisateur(rs.getInt("no_utilisateur"));
+		userSession.setNoUtilisateur(rs.getInt("no_utilisateur"));
 		userSession.setPseudo(rs.getString("pseudo"));
 		userSession.setNom(rs.getString("nom"));
 		userSession.setPrenom(rs.getString("prenom"));
 		userSession.setEmail(rs.getString("email"));
 		userSession.setTelephone(rs.getString("telephone"));
 		userSession.setRue(rs.getString("rue"));
-		userSession.setCode_postal(rs.getInt("code_postal"));
+		userSession.setCodePostal(rs.getInt("code_postal"));
 		userSession.setVille(rs.getString("ville"));
-		userSession.setMot_de_passe(rs.getString("mot_de_passe"));
+		userSession.setMotDePasse(rs.getString("mot_de_passe"));
 		userSession.setCredit(rs.getInt("credit"));
 		cnx.close();
 
@@ -70,9 +70,9 @@ public class UserDAOJDBCImpl {
 		rqt.setString(4, userAjoute.getEmail());
 		rqt.setString(5, userAjoute.getTelephone());
 		rqt.setString(6, userAjoute.getRue());
-		rqt.setInt(7, userAjoute.getCode_postal());
+		rqt.setInt(7, userAjoute.getCodePostal());
 		rqt.setString(8, userAjoute.getVille());
-		rqt.setString(9, userAjoute.getMot_de_passe());
+		rqt.setString(9, userAjoute.getMotDePasse());
 		rqt.setInt(10, 100);
 		rqt.setBoolean(11, false);
 //Verifie si des lignes ont ï¿½tï¿½ ajoutï¿½es, SI OUI -> genere KEY identity et ajoute ï¿½ l'user insï¿½rï¿½
@@ -80,7 +80,7 @@ public class UserDAOJDBCImpl {
 		if (numberAffectedLine > 0) {
 			ResultSet rs = rqt.getGeneratedKeys();
 			if (rs.next()) {
-				userAjoute.setNo_utilisateur(rs.getInt(1));
+				userAjoute.setNoUtilisateur(rs.getInt(1));
 			}
 		}
 		cnx.close();
@@ -126,7 +126,7 @@ public class UserDAOJDBCImpl {
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(SELECT_USER);
 		rqt.setString(1, user.getEmail());
-		rqt.setString(2, user.getMot_de_passe());
+		rqt.setString(2, user.getMotDePasse());
 		ResultSet rs = rqt.executeQuery();
 		rs.next();
 		try {
@@ -140,15 +140,15 @@ public class UserDAOJDBCImpl {
 		}
 		System.out.println("JDBC" + flag);
 		System.out.println(user.getEmail());
-		System.out.println(user.getMot_de_passe());
+		System.out.println(user.getMotDePasse());
 		System.out.println(rs.getString(5));
 		cnx.close();
 		return flag;
 	}
 	//Fonction de suppression de compte à partir de l'email et du mot de passse
-	public String deleteUserByEmailAndMdp(String email, String mot_de_passe) throws Exception {
+	public String deleteUserByEmailAndMdp(String email, String motDePasse) throws Exception {
 		System.out.println("dao " + email);
-		System.out.println("dao " + mot_de_passe);
+		System.out.println("dao " + motDePasse);
 	String confirmation = null;
 
 	// Connection + Requete DELETE EMAIL & MDP
@@ -156,7 +156,7 @@ public class UserDAOJDBCImpl {
 	PreparedStatement rqt = cnx.prepareStatement(DELETE_USER_BY_EMAIL_AND_MDP);
 	//Creation requete avec email et mot_de_passe en parametre de methode
 	rqt.setString(1, email);
-	rqt.setString(2, mot_de_passe);
+	rqt.setString(2, motDePasse);
 	int rs = rqt.executeUpdate();
 	
 	if(rs == 1) {
@@ -175,7 +175,7 @@ public class UserDAOJDBCImpl {
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(UPDATE_USER_BY_NO_UTILISATEUR);
 		
-		System.out.println(userAModifier.getNo_utilisateur());
+		System.out.println(userAModifier.getNoUtilisateur());
 		System.out.println(userAModifier.getPseudo());
 		System.out.println(userAModifier.getNom());
 		System.out.println(userAModifier.getPrenom());
@@ -190,10 +190,10 @@ public class UserDAOJDBCImpl {
 		rqt.setString(4, userAModifier.getEmail());
 		rqt.setString(5, userAModifier.getTelephone());
 		rqt.setString(6, userAModifier.getRue());
-		rqt.setInt(7, userAModifier.getCode_postal());
+		rqt.setInt(7, userAModifier.getCodePostal());
 		rqt.setString(8, userAModifier.getVille());
-		rqt.setString(9, userAModifier.getMot_de_passe());
-		rqt.setInt(10, userAModifier.getNo_utilisateur());
+		rqt.setString(9, userAModifier.getMotDePasse());
+		rqt.setInt(10, userAModifier.getNoUtilisateur());
 		
 		int rs = rqt.executeUpdate();
 		
