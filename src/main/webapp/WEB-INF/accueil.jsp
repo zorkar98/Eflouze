@@ -54,12 +54,12 @@
 			</ul>
 			</div>
 			</form>
-		</c:if>
+	</c:if>
 	<div class="container_enchere">
 		
 			<img alt="" src=""> 
 			<c:forEach items="${liste}" var="article">
-			<div class="list_enchere">
+			 <div class="list_enchere">
 				<c:out value="Nom de l'article : ${article.nomArticle}"/><br>
 				<c:out value="Prix : ${article.prixInitial}"/><br>
 				<c:out value="Fin de l'enchère :${article.dateFinEnchere}"/><br>
@@ -67,35 +67,7 @@
 				<a href="${pageContext.request.contextPath}/profil?titre = name" >${requestScope.noUtilisateur}</a>
 			</div>
 			</c:forEach>
-					
 		
-		<div class="mes_enchere">
-			<img alt="" src=""> <a>Nom de l'article :</a>
-			<p>Prix :</p>
-			<p>Fin de l'enchère :</p>
-			<p>Vendeur :</p>
-		</div>
-		<div class="container_enchere">
-			
-				<img alt="" src="">
-			<c:forEach items="${listeArticles}" var="article">
-					<div class="list_enchere">
-						<c:out value="Nom article : ${article.nomArticle}"/><br>
-						<c:out value="Prix : ${article.prixInitial}"/><br>
-						<c:out value="Fin de l'enchere : "/><br>
-						<c:out value="Vendeur : ${article.noUtilisateur}"/><br>
-					</div>
-			</c:forEach>
-			
-			
-			<!-- <div class="mes_enchere">
-				<img alt="" src="">
-				<a>Nom de l'article :</a>
-				<p>Prix : </p>
-				<p>Fin de l'enchère :</p>
-				<p>Vendeur :</p>
-			</div> -->
-		</div>
 	</div>
 	<p>${requestScope.confirmation}</p>
 </body>
