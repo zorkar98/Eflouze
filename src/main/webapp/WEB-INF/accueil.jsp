@@ -39,18 +39,18 @@
 			<form action="" class="container_mes_listes">
 			<div>
 			<ul>
-				<li><input type="radio" name="Achats" value="Achats"><a>Achats</a></li>
-				<li class="container_mes_listes_li"><input type="checkbox" name="Enchères ouvertes"><a>Enchères ouvertes</a></li>
-				<li class="container_mes_listes_li"><input type="checkbox" name="Mes enchères" ><a>Mes enchères</a></li>
-				<li class="container_mes_listes_li"><input type="checkbox" name="Mes enchères remportées" ><a>Mes enchères remportées</a></li>
+				<li><input type="radio" name="choix" id="choix"value="Achats" checked><label for="choix" >Achats</label></li>
+				<li class="container_mes_listes_li"><input type="checkbox" name="choix2" checked><a>Enchères ouvertes</a></li>
+				<li class="container_mes_listes_li"><input type="checkbox" name="choix2" ><a>Mes enchères</a></li>
+				<li class="container_mes_listes_li"><input type="checkbox" name="choix2" ><a>Mes enchères remportées</a></li>
 			</ul>
 			</div>
 			<div>
 			<ul>
-				<li><input type="radio" name="Mes Ventes" value="Mes Ventes"><a>Mes ventes</a></li>
-				<li class="container_mes_listes_li"><input type="checkbox" name="Mes ventes en cours"><a>Mes ventes en cours</a></li>
-				<li class="container_mes_listes_li"><input type="checkbox" name="Ventes non débutées" ><a>Ventes non débutées</a></li>
-				<li class="container_mes_listes_li"><input type="checkbox" name="Ventes terminées" ><a>Ventes terminées</a></li>
+				<li><input type="radio" name="choix"  id="choix" value="MesVentes" ><label for="choix">Mes Ventes</label></li>
+				<li class="container_mes_listes_li"><input type="checkbox" name="choix2"><a>Mes ventes en cours</a></li>
+				<li class="container_mes_listes_li"><input type="checkbox" name="choix2" ><a>Ventes non débutées</a></li>
+				<li class="container_mes_listes_li"><input type="checkbox" name="choix2" ><a>Ventes terminées</a></li>
 			</ul>
 			</div>
 			</form>

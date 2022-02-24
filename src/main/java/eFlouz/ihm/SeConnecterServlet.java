@@ -82,7 +82,7 @@ public class SeConnecterServlet extends HttpServlet {
 				try {
 					userSession = UserDAOJDBCImpl.selectUserByEmailAndMdp(email, mdp);
 					session.setAttribute("user", userSession);
-					session.setMaxInactiveInterval(3000);
+					session.setMaxInactiveInterval(300);
 					
 				} catch (Exception e) {
 					e.printStackTrace();

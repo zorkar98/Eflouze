@@ -13,7 +13,7 @@
 <body class="body">
 	
 	<c:choose>
-	<c:when test="${empty sessionScope}">
+	<c:when test="${empty sessionScope} }">
 	<jsp:include page="/WEB-INF/fragment/header.jspf"></jsp:include>
 	</c:when>
 	<c:when test="${not empty sessionScope}">
@@ -22,8 +22,7 @@
 	</c:choose>
 	<div class="container2">
 		<div class="info_profil">
-	<c:choose>
-		<c:when test="${not empty sessionScope}">
+	<c:if test="${not empty sessionScope && empty requestScope.vendeur}">
 		
 			<p>Pseudo : ${sessionScope.user.pseudo}</p>
 			<p>Nom : ${sessionScope.user.nom}</p>
@@ -35,19 +34,18 @@
 			<p>Ville : ${sessionScope.user.ville}</p>
 			<p>Credit : ${sessionScope.user.credit}</p>
 			<a href="${pageContext.request.contextPath }/monProfil" ><input class="form_item_submit" type="button" value="Modifier" name="Annuler"></a>
-	 </c:when>
+	 </c:if>
 
-	<c:when test="${empty requestScope.vendeur}">
+	<c:if test="${not empty requestScope.vendeur}">
 		<p>Pseudo : ${requestScope.vendeur.pseudo}</p>
 			<p>Nom : ${requestScope.vendeur.nom}</p>
 			<p>Prénom : ${requestScope.vendeur.prenom}</p>
 			<p>Email : ${requestScope.vendeur.email}</p>
-			<p>Téléphone : ${requestScope.vendeur.no_telephone}</p>
+			<p>Téléphone : ${requestScope.vendeur.telephone}</p>
 			<p>Rue : ${requestScope.vendeur.rue}</p>
-			<p>Code postal : ${requestScope.vendeur.code_postal}</p>
+			<p>Code postal : ${requestScope.vendeur.codePostal}</p>
 			<p>Ville : ${requestScope.vendeur.ville}</p>
-		</c:when> 
-	</c:choose> 
+		</c:if> 
 		</div>
 	</div>
 </body>
