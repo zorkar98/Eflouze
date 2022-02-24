@@ -1,7 +1,6 @@
 package eFlouz.ihm;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,6 @@ import eFlouz.bll.UserManager;
 import eFlouz.bo.Article;
 import eFlouz.bo.User;
 import eFlouz.dal.ArticleDAOJBDCImpl;
-import eFlouz.dal.UserDAOJDBCImpl;
 
 /**
  * Servlet implementation class AfficherArticleServlet
@@ -72,11 +70,19 @@ public class AfficherArticleServlet extends HttpServlet {
 		int categorie = articleVendu.getNoCategorie();
 		request.setAttribute("categorie", categorie);
 
-		int montantMeilleureEnchere = articleVendu.getPrixVente();
-		request.setAttribute("montantMeilleureEnchere", montantMeilleureEnchere);
-
 		int prixInitial = articleVendu.getPrixInitial();
 		request.setAttribute("prixInitial", prixInitial);
+		
+		int montantMeilleureEnchere = articleVendu.getPrixVente();
+		
+		try {
+			EnchereManager.connaitreEnchereMax (noArticle);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("montantMeilleureEnchere", montantMeilleureEnchere);
+
 
 		User userVendeur = new User ();
 		

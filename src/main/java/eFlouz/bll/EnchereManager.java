@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import eFlouz.bo.Enchere;
+import eFlouz.dal.ArticleDAOJBDCImpl;
 import eFlouz.dal.EnchereDAOJDBCImpl;
 
 public class EnchereManager {
@@ -20,6 +21,24 @@ public class EnchereManager {
 		e.printStackTrace();
 	}
 	}
+	
+	public static void connaitreEnchereMax (int noArticle) throws Exception {
+
+		Enchere meilleureEnchere = new Enchere ();
+		
+		meilleureEnchere = EnchereDAOJDBCImpl.selectMaxByNoArticle (noArticle);
+		
+		System.out.println(meilleureEnchere);
+		
+		int prixVente;
+		
+		prixVente = meilleureEnchere.getMontantEnchere();
+		
+		System.out.println("prix :" + prixVente);
+		
+		ArticleDAOJBDCImpl.insertPrixVente (prixVente, noArticle);
+	}
+	
 	
 	
 }

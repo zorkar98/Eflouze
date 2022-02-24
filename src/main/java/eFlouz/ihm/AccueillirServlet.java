@@ -2,7 +2,6 @@ package eFlouz.ihm;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import eFlouz.bo.Article;
-import eFlouz.dal.ArticleDAOJBDCImpl;
-
-import eFlouz.bll.ArticleManager;
 import eFlouz.bo.Article;
 import eFlouz.dal.ArticleDAOJBDCImpl;
 

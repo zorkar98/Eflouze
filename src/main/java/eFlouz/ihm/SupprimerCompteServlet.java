@@ -10,11 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-
 import eFlouz.bll.UserManager;
 import eFlouz.bo.User;
-import eFlouz.dal.UserDAOJDBCImpl;
 
 /**
  * Servlet implementation class SupprimerCompteServlet

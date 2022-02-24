@@ -1,15 +1,12 @@
 package eFlouz.dal;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import java.time.LocalDate;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import eFlouz.bo.Article;
 
@@ -25,7 +22,8 @@ public class ArticleDAOJBDCImpl {
 	private static final String SELECT_ARTICLE_EN_VENTE = "SELECT no_article, nom_article,description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,ARTICLES_VENDUS.no_utilisateur, no_categorie,  UTILISATEURS.no_utilisateur as utilisateurnb, pseudo FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS  ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur WHERE date_debut_encheres <= ? and date_fin_encheres >= ?";
 	
 	private static final String SELECT_ARTICLE_VENDUS = "SELECT * FROM ARTICLES_VENDUS";
-		
+	
+	private static final String UPDATE_PRIX_VENTE = "UPDATE ARTICLES_VENDUS SET prix_vente = ? WHERE no_article = ? ";
 	
 	
 	public List<Article> selectArticleVendus() throws SQLException {
@@ -169,6 +167,17 @@ public class ArticleDAOJBDCImpl {
 		System.out.println("DAO "+ listeArticleEnVente);
 		
 		return listeArticleEnVente;
+	}
+	
+	public static void insertPrixVente(int prixVente,int noArticle) throws Exception {
+
+		Connection cnx = ConnectionProvider.getConnection();
+		PreparedStatement rqt = cnx.prepareStatement(UPDATE_PRIX_VENTE); 
+		
+		rqt.setInt(1, prixVente);
+		rqt.setInt(2, noArticle);
+	
+		rqt.executeUpdate();
 	}
 }
 

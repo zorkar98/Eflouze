@@ -11,8 +11,8 @@ public class EnchereDAOJDBCImpl {
 	
 	//Ordre sql insert ENCHERE
 	private static final String INSERT_ENCHERE = "INSERT INTO ENCHERES VALUES (?,?,?,?)";
-	private static final String SELECT_BY_NO_ARTICLE = "SELECT * FROM ENCHERE WHERE no_article = ?";
-	
+	private static final String SELECT_BY_NO_ARTICLE = "SELECT * FROM ENCHERES WHERE no_article = ?";
+	private static final String SELECT_MAX_BY_NO_ARTICLE = "SELECT MAX (montant_enchere) AS montant_enchere FROM ENCHERES WHERE no_article = ? ";
 	
 	//Fonction inserer enchere return Enchere a ajouter
 	public void insererEnchere(Enchere enchereAjoute) throws SQLException {
@@ -45,6 +45,8 @@ public class EnchereDAOJDBCImpl {
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement rqt = cnx.prepareStatement(SELECT_BY_NO_ARTICLE);
 		
+		
+		
 		ResultSet rs = rqt.executeQuery();
 
 		
@@ -55,4 +57,27 @@ public class EnchereDAOJDBCImpl {
 		
 		return meilleureEnchere;
 	}
+	
+	public static Enchere selectMaxByNoArticle (int noArticle) throws Exception {
+		
+		Connection cnx = ConnectionProvider.getConnection();
+		PreparedStatement rqt = cnx.prepareStatement(SELECT_MAX_BY_NO_ARTICLE);
+		
+		rqt.setInt(1, noArticle);
+		
+		ResultSet rs = rqt.executeQuery();
+		
+		Enchere meilleureEnchere = new Enchere();
+		
+		rs.next();
+		
+		meilleureEnchere.setMontantEnchere(rs.getInt("montant_enchere"));
+		
+		System.out.println("meilleure enchere : " + meilleureEnchere);
+		
+		return meilleureEnchere;
+
+		
+	}
+	
 }
