@@ -32,6 +32,7 @@ public class AfficherProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String vendeurPseudo = request.getParameter("vendeur");
+		System.out.println("vendeurPseudo" + vendeurPseudo);
 		User vendeurArticle;
 		try {
 			vendeurArticle = UserDAOJDBCImpl.selectInfoVendeur(vendeurPseudo);
