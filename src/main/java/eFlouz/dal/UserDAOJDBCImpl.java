@@ -206,7 +206,7 @@ public class UserDAOJDBCImpl {
 		cnx.close();
 	}
 	//Méthode de création d'un user à stocker dans la session
-		public static User selectInfoVendeur(String vendeur) throws Exception {
+		public User selectInfoVendeur(String vendeur) throws Exception {
 			System.out.println("vendeur dal " + vendeur);
 			int noUtilisateur = 0;
 			String pseudo = null;
@@ -238,10 +238,12 @@ public class UserDAOJDBCImpl {
 			utilisateur.setVille(rs.getString("ville"));
 			utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 			utilisateur.setCredit(rs.getInt("credit"));
-			cnx.close();
+			
 			System.out.println("vendeur dal" + utilisateur.toString());
 			return utilisateur;
+			
 		}
+		
 	
 //	public static User selectUserByNoUtilisateur (int noUtilisateur) throws SQLException {
 //		

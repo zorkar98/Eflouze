@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.remporte {
+	color: green;
+	
+}
+.container{
+	margin: auto;
+    display: table;
+    padding-top: 100px;
+}
+
+.widthDescri{
+	width: 300px;
+}

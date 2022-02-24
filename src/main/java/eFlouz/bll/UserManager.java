@@ -90,7 +90,7 @@ public class UserManager {
 		
 		User utilisateur = null;
 		try {
-			utilisateur = UserDAOJDBCImpl.selectInfoVendeur(vendeur);
+			utilisateur = userOkDao.selectInfoVendeur(vendeur);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
