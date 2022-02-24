@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 public class Article {
 
-	
-
 	private int noArticle;
 	private String nomArticle;
 	private String description;
@@ -15,7 +13,15 @@ public class Article {
 	private int prixVente;
 	private int noUtilisateur;
 	private int noCategorie;
+	private String pseudo;
 
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
 	public Article(String nomArticle, String description, LocalDate dateDebutEnchere,
 			LocalDate dateFinEnchere, int prixInitial ,int noUtilisateur, int noCategorie) {
 		super();
@@ -28,8 +34,25 @@ public class Article {
 		this.noCategorie = noCategorie;
 	}
 
+
 	public Article() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public Article(int noArticle2, String nomArticle2, String description2, LocalDate dateDebutEnchere2,
+			LocalDate dateFinEncheres, int prixInitial2, int prixVente2, int noUtilisateur2, int noCategorie2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Article(int noArticle, String nomArticle, String description, int prixInitial ,int noUtilisateur, int noCategorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.prixInitial = prixInitial;
+		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
 	}
 
 	public String getDescription() {

@@ -25,26 +25,26 @@
 	<br>
 		<p class="message_creation"> ${requestScope.Succes}${requestScope.Pseudo}${requestScope.Email}${requestScope.Both}</p>
 	<br>
-	<form  action="./monProfil" method="post" class="form">
+	<form action="./monProfil" method="post" class="form">
 		<div class="div">
-			<input class="form_item" type="text" name="Pseudo" placeholder="Pseudo"> 
-			<input class="form_item" type="text" name="Nom" placeholder="Nom">
+			<input class="form_item" type="text" name="Pseudo" placeholder="Pseudo" required="required"> 
+			<input class="form_item" type="text" name="Nom" placeholder="Nom" required="required">
 		</div>
 		<div class="div">
-			<input class="form_item" type="text" name="Prenom" placeholder="Prenom">
-			<input class="form_item" type="text" name="Email" placeholder="Email">
+			<input class="form_item" type="text" name="Prenom" placeholder="Prenom" required="required">
+			<input class="form_item" type="email" name="Email" placeholder="Email" required="required">
 		</div>
 		<div class="div">
-			<input class="form_item" type="text" name="Telephone" placeholder="Telephone">
-			<input class="form_item" type="text" name="Rue" placeholder="Rue">
+			<input class="form_item" type="tel" name="Telephone" placeholder="Telephone" required="required">
+			<input class="form_item" type="text" name="Rue" placeholder="Rue" required="required">
 		</div>
 		<div class="div">
-			<input class="form_item" type="text" name="CodePostal" placeholder="Code Postal">
-			<input class="form_item" type="text" name="Ville" placeholder="Ville">
+			<input class="form_item" type="text" name="CodePostal" placeholder="Code Postal" required="required">
+			<input class="form_item" type="text" name="Ville" placeholder="Ville" required="required">
 		</div>
 		<div class="div">
-			<input class="form_item" type="text" name="MotDePasse" placeholder="Mot de passe">
-			<input class="form_item" type="text" name="Confirmation" placeholder="Confirmation">
+			<input class="form_item" type="password" name="MotDePasse" placeholder="Mot de passe" required="required">
+			<input class="form_item" type="password" name="Confirmation" placeholder="Confirmation" required="required">
 		</div>
 		<br>
 		<div class="div_submit">

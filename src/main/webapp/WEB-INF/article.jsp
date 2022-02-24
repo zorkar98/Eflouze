@@ -16,24 +16,24 @@
 		<div>
 			<h1>Nouvelle vente</h1>
 			<form action="${pageContext.request.contextPath}/vendre" method="post">
-				<p>Article : <input type="text" name="nomArticle"></p>
-				<p class="description_taille">Description :  <input type="text" name="description"></p>
+				<p>Article : <input type="text" name="nomArticle" required="required"></p>
+				<p class="description_taille">Description :  <input type="text" name="description" required="required"></p>
 				<p>Catégorie
 					<select name="categorie">
-						<option>--Choisissez la catégorie</option>
+						<option required="required">--Choisissez la catégorie</option>
 						<option value="1">Maison</option>
 						<option value="2">High-Tech</option>
 						<option value="3">Voiture</option>
 					</select>
 				</p>
 				<p>Photo <input type="submit" name="uploader" value="UPLOADER"></p>
-				<p>Mise à prix : <input type="number" name="prix"></p>
-				<p>Debut enchere <input type="date" name="debutDate"></p>
-				<p>Fin enchere : <input type="date" name="finDate"></p>
+				<p>Mise à prix : <input type="number" name="prix" required="required"></p>
+				<p>Debut enchere <input type="date" name="debutDate" required="required"></p>
+				<p>Fin enchere : <input type="date" name="finDate" required="required"></p>
 				<div>
-					<p>Rue : <input type="text"></p>
-					<p>Code postal : <input type="text"></p>
-					<p>Ville : <input type="text"></p>
+					<p>Rue : <input type="text" required="required"></p>
+					<p>Code postal : <input type="text" required="required"></p>
+					<p>Ville : <input type="text" required="required"></p>
 					
 				</div>
 				<input type="submit" value="Enregistrer">

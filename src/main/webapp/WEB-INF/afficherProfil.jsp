@@ -31,7 +31,7 @@
 			<p>Email : ${sessionScope.user.email}</p>
 			<p>Téléphone : ${sessionScope.user.telephone}</p>
 			<p>Rue : ${sessionScope.user.rue}</p>
-			<p>Code postal : ${sessionScope.user.code_postal}</p>
+			<p>Code postal : ${sessionScope.user.codePostal}</p>
 			<p>Ville : ${sessionScope.user.ville}</p>
 			<p>Credit : ${sessionScope.user.credit}</p>
 			<a href="${pageContext.request.contextPath }/monProfil" ><input class="form_item_submit" type="button" value="Modifier" name="Annuler"></a>

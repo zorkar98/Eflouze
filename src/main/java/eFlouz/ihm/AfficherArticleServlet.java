@@ -83,7 +83,7 @@ public class AfficherArticleServlet extends HttpServlet {
 		String rue = vendeur.getRue();
 		request.setAttribute("rue", rue);
 		
-		int codePostal = vendeur.getCode_postal();
+		int codePostal = vendeur.getCodePostal();
 		request.setAttribute("codePostal", codePostal);
 		
 		String ville = vendeur.getVille();

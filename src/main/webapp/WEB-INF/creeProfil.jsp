@@ -32,33 +32,39 @@
 		<div class="div">
 			<input class="form_item" type="text" name="Pseudo"
 				placeholder="Pseudo"> <input class="form_item" type="text"
-				name="Nom" placeholder="Nom">
+				name="Nom" placeholder="Nom" required="required">
 		</div>
 		<div class="div">
 			<input class="form_item" type="text" name="Prenom"
-				placeholder="Prenom"> <input class="form_item" type="text"
-				name="Email" placeholder="Email">
+				placeholder="Prenom"> <input class="form_item" type="email"
+				name="Email" placeholder="Email" required="required">
 		</div>
 		<div class="div">
-			<input class="form_item" type="text" name="Telephone"
+			<input class="form_item" type="tel" name="Telephone"
 				placeholder="Telephone"> <input class="form_item"
-				type="text" name="Rue" placeholder="Rue">
+				type="text" name="Rue" placeholder="Rue" required="required">
 		</div>
 		<div class="div">
 			<input class="form_item" type="text" name="CodePostal"
 				placeholder="Code Postal"> <input class="form_item"
-				type="text" name="Ville" placeholder="Ville">
+				type="text" name="Ville" placeholder="Ville" required="required">
 		</div>
 		<div class="div">
 			<c:if test="${not empty sessionScope.user.pseudo}">
 				<input class="form_item" type="password" name="AncienMotDePasse"
-					placeholder="Ancien Mot de passe">
+
+					placeholder="Ancien Mot de passe" required="required">
+
 			</c:if>
 		</div>
 		<div class="div">
+
 			<input class="form_item" type="password"" name="MotDePasse"
+
 				placeholder="Mot de passe"> <input class="form_item"
-				type="password" name="Confirmation" placeholder="Confirmation">
+
+				type="password" name="Confirmation" placeholder="Confirmation" required="required">
+
 		</div>
 		<div class="div">
 			<br>
@@ -66,7 +72,7 @@
 
 				<div class="div_submit">
 
-					<a href="${pageContext.request.contextPath }/modifierProfil"><input class="form_item_submit" type="submit" value="Enregistrer modifications" name="Enregistrer"></a> 
+					<a href="${pageContext.request.contextPath }/modifierProfil"><input class="form_item_submit" type="submit" value="Enregistrer" name="Enregistrer"></a> 
 					<a href="${pageContext.request.contextPath }/supprimerCompte"><input class="form_item_submit" type="button" value="Supprimer" name="Supprimer"></a>
 				</div>
 			</c:if>

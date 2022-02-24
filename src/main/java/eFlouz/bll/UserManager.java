@@ -13,10 +13,10 @@ public class UserManager {
 	String email;
 	String telephone;
 	String rue;
-	int code_postal;
+	int codePostal;
 	String ville;
-	String mot_de_passe;
-	User user = new User(pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe);
+	String motDePasse;
+	User user = new User(pseudo, nom, prenom, email, telephone, rue, codePostal,ville, motDePasse);
 	
 //Fonction
 	public boolean seConnecter(String email,String mdp) throws Exception{
@@ -80,7 +80,7 @@ public class UserManager {
 		
 	
 		if (userSession != userAvecModif) {
-			userAvecModif.setNo_utilisateur(userSession.getNo_utilisateur());
+			userAvecModif.setNoUtilisateur(userSession.getNoUtilisateur());
 			UserDAOJDBCImpl.updateUserByNoUtilisateur(userAvecModif);
 		}
 		

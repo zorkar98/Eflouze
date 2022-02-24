@@ -62,7 +62,7 @@ public class VendreServlet extends HttpServlet {
 		
 		//Recuperer noUtilisateur dans session
 		User userSession = (User)session.getAttribute("user");
-		int noUtilisateur = userSession.getNo_utilisateur();
+		int noUtilisateur = userSession.getNoUtilisateur();
 		
 		//TODO ajouter l'adresse dans article 
 		//String rue = request.getParameter("rue");
