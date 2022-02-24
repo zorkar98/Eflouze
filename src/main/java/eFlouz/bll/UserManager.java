@@ -85,7 +85,7 @@ public class UserManager {
 		}
 	}
 	
-	public User selectInfoVendeur (String vendeur)
+	public static User selectInfoVendeur (String vendeur)
 	{
 		
 		User utilisateur = null;

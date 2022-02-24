@@ -1,6 +1,7 @@
 package eFlouz.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import eFlouz.bll.EnchereManager;
+import eFlouz.bll.UserManager;
 import eFlouz.bo.Article;
 import eFlouz.bo.User;
 import eFlouz.dal.ArticleDAOJBDCImpl;
+import eFlouz.dal.UserDAOJDBCImpl;
 
 /**
  * Servlet implementation class AfficherArticleServlet
@@ -56,7 +59,7 @@ public class AfficherArticleServlet extends HttpServlet {
 		int noArticle = Integer.parseInt(request.getParameter("titre"));
 
 		Article articleVendu = listeArticleEnVente.get(noArticle - 1);
-
+	
 		String nomArticle = articleVendu.getNomArticle();
 		request.setAttribute("nomArticle", nomArticle);
 
@@ -75,14 +78,20 @@ public class AfficherArticleServlet extends HttpServlet {
 		int prixInitial = articleVendu.getPrixInitial();
 		request.setAttribute("prixInitial", prixInitial);
 
-//		String rue = articleVendu.getRue();
-//		request.setAttribute("rue", rue);
-//		
-//		int codePostal = articleVendu.getCodePostal();
-//		request.setAttribute("codePostal", codePostal);
-//		
-//		String ville = articleVendu.getVille();
-//		request.setAttribute("ville", ville);
+		User userVendeur = new User ();
+		
+		userVendeur = UserManager.selectInfoVendeur(articleVendu.getPseudo());
+		
+		System.out.println("User Vendeur" +userVendeur);
+		
+		String rue = userVendeur.getRue();
+		request.setAttribute("rue", rue);
+		
+		int codePostal = userVendeur.getCodePostal();
+		request.setAttribute("codePostal", codePostal);
+		
+		String ville = userVendeur.getVille();
+		request.setAttribute("ville", ville);
 
 		String pseudoVendeur = articleVendu.getPseudo();
 		request.setAttribute("pseudoVendeur", pseudoVendeur);
