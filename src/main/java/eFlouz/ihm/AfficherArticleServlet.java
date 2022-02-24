@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import eFlouz.bll.EnchereManager;
+import eFlouz.bll.UserManager;
 import eFlouz.bo.Article;
 import eFlouz.bo.User;
 import eFlouz.dal.ArticleDAOJBDCImpl;
@@ -42,7 +43,10 @@ public class AfficherArticleServlet extends HttpServlet {
 
 		List<Article> listeArticleEnVente = new ArrayList<Article>();
 		ArticleDAOJBDCImpl articleDao = new ArticleDAOJBDCImpl();
-
+		User userVendeur = new User ();
+		UserManager userMng = new UserManager();
+		
+		
 		LocalDate date = LocalDate.now();
 		// Appel de la methode de ArticleManager pour récupérer les articles en ventes
 		// ce jour
@@ -56,7 +60,7 @@ public class AfficherArticleServlet extends HttpServlet {
 		int noArticle = Integer.parseInt(request.getParameter("titre"));
 
 		Article articleVendu = listeArticleEnVente.get(noArticle - 1);
-
+	
 		String nomArticle = articleVendu.getNomArticle();
 		request.setAttribute("nomArticle", nomArticle);
 
@@ -75,14 +79,19 @@ public class AfficherArticleServlet extends HttpServlet {
 		int prixInitial = articleVendu.getPrixInitial();
 		request.setAttribute("prixInitial", prixInitial);
 
-//		String rue = articleVendu.getRue();
-//		request.setAttribute("rue", rue);
-//		
-//		int codePostal = articleVendu.getCodePostal();
-//		request.setAttribute("codePostal", codePostal);
-//		
-//		String ville = articleVendu.getVille();
-//		request.setAttribute("ville", ville);
+		
+		userVendeur = userMng.selectInfoVendeur(articleVendu.getPseudo());
+		
+		System.out.println("User Vendeur" +userVendeur);
+		
+		String rue = userVendeur.getRue();
+		request.setAttribute("rue", rue);
+		
+		int codePostal = userVendeur.getCodePostal();
+		request.setAttribute("codePostal", codePostal);
+		
+		String ville = userVendeur.getVille();
+		request.setAttribute("ville", ville);
 
 		String pseudoVendeur = articleVendu.getPseudo();
 		request.setAttribute("pseudoVendeur", pseudoVendeur);
