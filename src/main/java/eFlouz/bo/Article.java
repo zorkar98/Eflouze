@@ -14,7 +14,9 @@ public class Article {
 	private int noUtilisateur;
 	private int noCategorie;
 	private String pseudo;
-
+	Enchere enchere = new Enchere(null);
+	
+	
 	public String getPseudo() {
 		return pseudo;
 	}
@@ -34,6 +36,12 @@ public class Article {
 		this.noCategorie = noCategorie;
 	}
 
+
+	public Article() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Article(int noArticle2, String nomArticle2, String description2, LocalDate dateDebutEnchere2,
 			LocalDate dateFinEncheres, int prixInitial2, int prixVente2, int noUtilisateur2, int noCategorie2) {
 		// TODO Auto-generated constructor stub
@@ -48,7 +56,7 @@ public class Article {
 		this.noUtilisateur = noUtilisateur;
 		this.noCategorie = noCategorie;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}

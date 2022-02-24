@@ -4,7 +4,12 @@ package eFlouz.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
+import javax.servlet.http.HttpSession;
+
+import eFlouz.bo.Enchere;
 import eFlouz.bo.User;
 
 public class UserDAOJDBCImpl {
@@ -19,6 +24,7 @@ public class UserDAOJDBCImpl {
 	private static final String UPDATE_USER_BY_NO_UTILISATEUR = "UPDATE [UTILISATEURS] SET pseudo = ?, nom = ?, prenom = ? ,email = ? ,telephone = ? , rue = ? , code_postal = ? , ville  = ?, mot_de_passe = ? WHERE no_utilisateur = ? ";
 	
 	private static final String SELECT_VENDEUR = "SELECT pseudo, email FROM UTILISATEURS WHERE pseudo=? ";
+//	private static final String SELECT_USER_BY_NO_UTILISATEUR = "SELECT * FROM ARTICLES WHERE no_utilisateur = ? ";
 	
 	//UPDATE UTILISATEURS SET pseudo ='Zorkar' , nom ='Quere', prenom = 'Clement' , email = 'clement.quere2021@campus-eni.fr' , telephone = '0652281966', rue = '2 Rue du Vicomte De La Cassecouillerie', code_postal =  44830, ville = 'Bouaye', mot_de_passe = 'azerty' WHERE no_utilisateur = 1;
 	
@@ -193,6 +199,7 @@ public class UserDAOJDBCImpl {
 		rqt.setString(8, userAModifier.getVille());
 		rqt.setString(9, userAModifier.getMotDePasse());
 		rqt.setInt(10, userAModifier.getNoUtilisateur());
+
 		
 		rqt.executeUpdate();
 		
@@ -234,4 +241,26 @@ public class UserDAOJDBCImpl {
 
 			return utilisateur;
 		}
+	
+//	public static User selectUserByNoUtilisateur (int noUtilisateur) throws SQLException {
+//		
+//		User user = new User ();
+//		
+//		Connection cnx = ConnectionProvider.getConnection();
+//		PreparedStatement rqt = cnx.prepareStatement(SELECT_USER_BY_NO_UTILISATEUR);
+//		
+//		rqt.setInt(1, noUtilisateur);
+//		
+//		ResultSet rs = rqt.executeQuery();
+//		rs.next();
+//		
+//		user.setRue(rs.getString("rue"));
+//		user.setCodePostal(rs.getInt("code_postal"));
+//		user.setVille(rs.getString("ville"));
+//		user.setPseudo(rs.getString("pseudo"));
+//		
+//		return user;
+//	}
+//	
+	
 }

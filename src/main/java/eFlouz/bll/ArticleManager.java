@@ -23,6 +23,23 @@ public class ArticleManager {
 		articleDao.insertArticle(articleAAjouter);
 
 	}
+
+	//Fonction de réccupération des détails d'un article
+	public Article afficherDetailsArticle (int noArticle) throws Exception {
+		
+		Article articleVendu = new Article ();
+		
+		try {
+			articleVendu = ArticleDAOJBDCImpl.selectArticle (noArticle);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return articleVendu ;
+	}
+	
+
+
 	// Appel de la methode de ArticleManagerDAOJDBC pour récupérer les articles en ventes ce jour
 	public List<Article> selectionnerArticleEnVente (LocalDate date)
 	{
@@ -37,4 +54,5 @@ public class ArticleManager {
 		
 		return listeArticleEnVente;
 	}
+
 }

@@ -61,7 +61,7 @@
 			<c:forEach items="${liste}" var="article">
 			 <div class="list_enchere">
 				<c:out value="Nom de l'article : "/>
-				<a href="detail?article=${article.nomArticle}" >${article.nomArticle}</a><br>
+				<a href="${pageContext.request.contextPath}/AfficherArticleServlet?titre=${article.noArticle}" >${article.nomArticle}</a><br>
 				<c:out value="Prix : ${article.prixInitial}"/><br>
 				<c:out value="Fin de l'enchère :${article.dateFinEnchere}"/><br>
 				<c:out value="Vendeur :" />
