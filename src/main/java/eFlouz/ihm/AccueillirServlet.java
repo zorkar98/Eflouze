@@ -39,36 +39,6 @@ public class AccueillirServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ArticleDAOJBDCImpl articleDao = new ArticleDAOJBDCImpl();
-		List<Article> listeArticles = new ArrayList<Article>();
-		
-		try {
-			
-			listeArticles = articleDao.selectArticleVendus();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		request.setAttribute("listeArticles", listeArticles);
-		for (Article article : listeArticles) {
-			System.out.println(article.getNomArticle());
-		}
-		
-		System.out.println(listeArticles);
-		
-		request.getParameter("titre");
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
-		if (rd != null) {
-		rd.forward(request, response);
-		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Article> listeArticleEnVente = new ArrayList<Article>();
 		ArticleDAOJBDCImpl articleDao = new ArticleDAOJBDCImpl();
 		
@@ -83,6 +53,17 @@ public class AccueillirServlet extends HttpServlet {
 		// Placer les article en vente dans un context d'application
 		request.setAttribute("liste",listeArticleEnVente);
 		System.out.println(listeArticleEnVente.toString());
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+		if (rd != null) {
+			rd.forward(request, response);
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		
 		doGet(request, response);
 	}
